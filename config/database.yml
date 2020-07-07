@@ -8,13 +8,17 @@ default: &default
 
 development:
   <<: *default
+  database: fleamarket_sample_78f_development
 
 test:
   <<: *default
   database: fleamarket_sample_78f_test
 
 production:
-  <<: *default
+  # <<: *default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: fleamarket_sample_78f_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
