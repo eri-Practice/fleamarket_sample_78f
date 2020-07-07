@@ -10,6 +10,7 @@ class CreateSendingDestinations < ActiveRecord::Migration[6.0]
       t.string :house_number
       t.string :building_name
       t.integer :phone_number
+      t.string :prefecture_code
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
