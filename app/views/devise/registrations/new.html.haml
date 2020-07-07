@@ -84,5 +84,11 @@
         %p 番地
         .field
           = d.text_field :house_number
+          %p マンション・ビル名・部屋番号
+        .field
+          = d.text_field :building_name
+          %p 電話番号
+        .field
+          = d.text_field :phone_number
       .actions
         = f.submit "登録"
