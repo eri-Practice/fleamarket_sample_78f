@@ -15,10 +15,7 @@ test:
   database: fleamarket_sample_78f_test
 
 production:
-  # <<: *default
-  adapter: mysql2
-  encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  <<: *default
   database: fleamarket_sample_78f_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
