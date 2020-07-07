@@ -60,7 +60,7 @@ gem 'mini_magick'
 gem 'devise'
 gem 'jp_prefecture'
 gem 'ancestry'
-
+gem 'pry-rails'
 group :production do
   gem 'unicorn'
 end
