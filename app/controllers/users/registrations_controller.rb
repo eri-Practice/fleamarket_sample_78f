@@ -3,16 +3,30 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  def new
-    @user = User.new
-    @profile = @user.build_profile
-    @sending_destination = @user.build_sending_destination
-  end
+  # def new
+    # @user = User.new
+    # @profile = @user.build_profile
+    # @sending_destination = @user.build_sending_destination
+  # end
   # GET /resource/sign_up
   # def new
   #   super
   # end
+  def new
+    @user = User.new
+    @user.build_profile
+    @user.build_sending_destination
+  end
 
+  def create
+    @user = User.new(user_params)
+    @user.save
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :profile_attributes => [:first_name, :family_name, :first_name_kana, :family_name_kana, :birth_date], :sending_destination_attributes => [:destination_first_name, :destination_family_name, :destination_first_name_kana, :destination_family_name_kana, :post_code, :city, :house_number, :building_name, :phone_number, :prefecture_code])
+  end
   # POST /resource
   # def create
   #   super
