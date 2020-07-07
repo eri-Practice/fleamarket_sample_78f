@@ -10,36 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_014758) do
+ActiveRecord::Schema.define(version: 2020_07_07_030238) do
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "first_name"
+    t.string "family_name"
+    t.string "first_name_kana"
+    t.string "family_name_kana"
+    t.date "birth_date"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "ancestry"
-    t.string "name"
-    t.index ["ancestry"], name: "index_categories_on_ancestry"
-  end
-
-  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "item_id"
-    t.string "image_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "introduction", null: false
-    t.integer "price", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "category"
-    t.integer "seller"
-    t.integer "buyer"
-    t.string "condition"
-    t.string "postage_payer"
-    t.string "prefecture"
-    t.string "standby_day"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "sending_destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -71,5 +53,6 @@ ActiveRecord::Schema.define(version: 2020_07_07_014758) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "profiles", "users"
   add_foreign_key "sending_destinations", "users"
 end
