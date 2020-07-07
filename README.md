@@ -85,7 +85,6 @@
 ### Categories table
 |Column|Type|Options|
 |------|----|-------|
-|item_id|reference|null: false, foreign_key:true|
 |name|string|null: false|
 |ancestry|string|null: false|
 #### Association
