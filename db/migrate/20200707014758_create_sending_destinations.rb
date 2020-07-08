@@ -3,7 +3,7 @@ class CreateSendingDestinations < ActiveRecord::Migration[6.0]
     create_table :sending_destinations do |t|
       t.string :destination_first_name
       t.string :destination_family_name
-      t.string :destination_first_kana
+      t.string :destination_first_name_kana
       t.string :destination_family_name_kana
       t.integer :post_code
       t.string :city
