@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new 
+    @item.images.build
   end
 
   def create
@@ -17,7 +18,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :text, :price, :category, :condition, :postage_payer, :prefecture, :standby_day, :trading_status, :seller, :buyer)
+    params.require(:item).permit(:name, :text, :price, :category, :condition, :postage_payer, :prefecture, :standby_day, :trading_status, :seller, :buyer, images_attributes: [:image_url])
     # .merge(seller: current_user.id) ログイン機能実装後に反映可能
   end
 
