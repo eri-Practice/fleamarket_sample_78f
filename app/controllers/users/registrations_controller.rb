@@ -12,6 +12,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
+  def index
+    @users = User.all
+    @user = User.new
+  end
+
   def new
     @user = User.new
     @user.build_profile
@@ -20,8 +25,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(user_params)
-    @user.save
+    @user.save!
   end
+
+  def after_sign_up_path_for(resource)
+    items_path
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    items_path
+  end
+
 
   private
   def user_params

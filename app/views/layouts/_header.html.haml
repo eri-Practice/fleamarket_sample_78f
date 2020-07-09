@@ -1,0 +1,28 @@
+%header.Pc-Header
+  .HeaderInner
+    .HeaderInner__main
+      %h1.HeaderInner__main--icon
+        =link_to root_path do
+          = image_tag 'material/logo/logo.png',class:'HeaderInner--logo'
+      .HeaderInner__main--searchBox
+        = form_with url: search_items_path, local: true, method: :get, class: "searchBox" do |form|
+          = form.text_field :keyword, placeholder: "キーワードから探す", class:'keyword'
+          = image_tag 'material/icon/icon-search 1.png',class:'searchBox__logo'
+      %ul.HeaderInner__main--resultLists
+    .Header-nav
+      %ul.Header-nav__listsLeft
+        %li.Header-nav__listsLeft--category
+          = link_to 'カテゴリー', root_path
+        %li.Header-nav__listsLeft--brand
+          = link_to 'ブランド', root_path
+      %ul.Header-nav__listsRight
+      - if user_signed_in?
+        %li.Header-nav__listsRight--logout
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
+        %li.Header-nav__listsRight--mypage
+          = link_to  "マイページ", root_path
+      - else
+        %li.Header-nav__listsRight--login
+          = link_to 'ログイン', new_user_session_path
+        %li.Header-nav__listsRight--new
+          = link_to '新規会員登録', new_user_registration_path

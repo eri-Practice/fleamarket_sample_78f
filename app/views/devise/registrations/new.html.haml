@@ -1,7 +1,7 @@
 .contents.row
   .container
     %h2 新規会員登録
-    = form_for @user do |f| 
+    = form_for(@user, url:user_registration_path, html: {method: 'post'}) do |f| 
       = devise_error_messages!
       .field
         = f.label :ニックネーム
