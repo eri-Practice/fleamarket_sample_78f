@@ -31,8 +31,7 @@
         .FormItem__title= label :postage_payer, '配送料の負担'
         = f.select :postage_payer, [["送料込み(出品者負担)", "送料込み(出品者負担)"],["着払い(購入者負担)", "着払い(購入者負担)"]], include_blank: "選択して下さい", class: 'FormItem__input'
       .FormItem
-        .FormItem__title= label :prefecture, '発送元の地域'
-        -# = f.select :prefecture, [["東京", 1],["沖縄", 2]], include_blank: "選択して下さい", class: 'FormItem__input'
+        .FormItem__title= label :prefecture_id, '発送元の地域'
         = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい", class: 'FormItem__input'
       .FormItem
         .FormItem__title= label :standby_day, '発送までの日数'

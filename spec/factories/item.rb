@@ -1,17 +1,16 @@
 FactoryBot.define do
 
   factory :item do
-    name            {}
-    text            {}
-    price           {}
-    category        {}
-    condition       {}
-    postage_payer   {}
-    prefecture      {}
-    standby_day     {}
-    trading_status  {}
-    seller          {}
-    buyer           {}
+    name            {Faker::Book.title}
+    text            {"いい本です。"}
+    price           {1000}
+    category        {1}
+    condition       {"新品、未使用"}
+    postage_payer   {"送料込み(出品者負担)"}
+    prefecture_id   {1}
+    standby_day     {"４〜７日で発送"}
+    trading_status  {"出品中"}
+    seller          {1}
   end
 
 end
