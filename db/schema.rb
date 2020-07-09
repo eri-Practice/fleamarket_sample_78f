@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_08_070432) do
+ActiveRecord::Schema.define(version: 2020_07_09_073646) do
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image_url"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_070432) do
     t.integer "category"
     t.string "condition"
     t.string "postage_payer"
-    t.integer "prefecture"
+    t.integer "prefecture_id"
     t.string "standby_day"
     t.string "trading_status"
     t.integer "seller"

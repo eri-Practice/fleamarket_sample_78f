@@ -1,6 +1,12 @@
 .FormWrapper
   .FormList
     = form_with model: @item, local: true, class:"Form" do |f|
+      - if @item.errors.any?
+        .SettingItemForm__errors
+          %h2= "#{@item.errors.full_messages.count}件のエラーが発生しました。"
+          %ul
+            - @item.errors.full_messages.each do |message|
+              %li= message
       .FormItem
         .FormItem__title= label :image, '商品画像'
         %p 最大４枚までアップロードできます
@@ -26,7 +32,8 @@
         = f.select :postage_payer, [["送料込み(出品者負担)", "送料込み(出品者負担)"],["着払い(購入者負担)", "着払い(購入者負担)"]], include_blank: "選択して下さい", class: 'FormItem__input'
       .FormItem
         .FormItem__title= label :prefecture, '発送元の地域'
-        = f.select :prefecture, [["東京", 1],["沖縄", 2]], include_blank: "選択して下さい", class: 'FormItem__input'
+        -# = f.select :prefecture, [["東京", 1],["沖縄", 2]], include_blank: "選択して下さい", class: 'FormItem__input'
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい", class: 'FormItem__input'
       .FormItem
         .FormItem__title= label :standby_day, '発送までの日数'
         = f.select :standby_day, [["１〜２日で発送", "１〜２日で発送"],["２〜３日で発送", "２〜３日で発送"],["４〜７日で発送", "４〜７日で発送"]], include_blank: "選択して下さい", class: 'FormItem__input'
