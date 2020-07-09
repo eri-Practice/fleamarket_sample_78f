@@ -2,19 +2,13 @@
   .FormList
     = form_with model: @item, local: true, class:"Form" do |f|
       .FormItem
-        .FormItem__title= label :image, '商品名'
-        %span.require 必須
-        %p 最大５枚までアップロードできます
-        #image-box
-          #image-box__container
-            = f.fields_for :images do |i|
-              = i.file_field :image_url, type: 'file', name: "item[images_attributes][][image_url]", value:"", style: "display:none", id:"img-file"
-              %label{for: "img-file"}
-                %i.fas.fa-camera
-                %p.imageText
-                  ドラッグアンドドロップ 
-                  %br
-                  またはクリックしてファイルをアップロード
+        .FormItem__title= label :image, '商品画像'
+        %p 最大４枚までアップロードできます
+        = f.fields_for :images do |i|
+          = i.file_field :image_url, class: "hidden-field"
+          %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image_url]", id: "item_images_attributes_1_image" }
+          %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image_url]", id: "item_images_attributes_2_image" }
+          %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image_url]", id: "item_images_attributes_3_image" }
       .FormItem
         .FormItem__title= label :name, '商品名'
         = f.text_field :name, class: "FormItem__input", placeholder: "商品名を入力"

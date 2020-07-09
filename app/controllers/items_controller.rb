@@ -4,14 +4,15 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new 
-    @item.images.build
+    @item.images.new
   end
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.images.present? && @item.save
       redirect_to new_item_path
     else
+      @item.images.new
       render :new
     end
   end
