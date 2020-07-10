@@ -8,7 +8,9 @@ class User < ApplicationRecord
          
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-
+  validates :nickname, presence: true
+  validates :password, presence: true
+  validates :password_confirmation, presence: true
   has_one :profile, dependent: :destroy
   has_one :sending_destination, dependent: :destroy
   accepts_nested_attributes_for :profile
