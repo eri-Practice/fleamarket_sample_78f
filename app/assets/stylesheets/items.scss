@@ -48,10 +48,53 @@
               .itemBox__price-detail{
               }
             }
+            .itemDetail{
+            }
             .ItemBox__table{
             }
-            .ItemBox__optionalArea{
 
+
+            .ItemBox__optionalArea{
+              display: flex;
+              justify-content: space-between;
+              ol,ul{
+                margin-block-start: 1em;
+                margin-inline-end: 1em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                padding-inline-start: 40px;
+                .optionalBtn.likeBtn{
+                  margin-right: auto;
+                  padding: 6px 10px;
+                  border-radius: 40px;
+                  color: #3ccace;
+                  border: 1px solid #ffb340;
+                  .fas.fa-star{
+
+                  }
+                }
+              }
+              .optional{
+                margin-block-start: 1em;
+                margin-inline-end: 1em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                padding-inline-start: 40px;
+                .optionalBtn{
+                  font-size: 14px;
+                  li,a{
+                    padding: 6px 10px;
+                    display: inline-block;
+                    border-radius: 4px;
+                    color: #333;
+                    border: 1px solid #333;
+                    text-decoration: none;
+                    .fas.fa-flag{
+                    }
+                  }
+                  
+                }
+              }
             }
           }
   
