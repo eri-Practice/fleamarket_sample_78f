@@ -1,0 +1,35 @@
+.Contents
+  %header.Contents__header
+    = link_to "#" do
+      = image_tag 'material/logo/logo.png', height: '49', width: '185'
+  .Contents__container
+    .ContainerInner
+      .ContainerInner__title
+        %h2 ログイン
+      .ContainerInner__form
+        .LoginUser
+          = form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f|
+            .LoginUser__emailField
+              = f.label :メールアドレス
+              %br/
+              = f.email_field :email, autofocus: true, class:"InputBox"
+            .LoginUser__passwordField
+              = f.label :パスワード
+              %br/
+              = f.password_field :password, autocomplete: "off", class:"InputBox"
+            - if devise_mapping.rememberable?
+              = f.label :ログインしたままにする
+              %br/
+              = f.check_box :remember_me
+            .Actions
+              = f.submit "Log in", class:"LoginBtn"
+  .Contents__footer
+    .FooterInner
+      %ul
+        %li プライバシーポリシー
+        %li FURIMA利用規約
+        %li 特定商取引に関する表記
+      .FooterInner__logo
+        = link_to "#" do
+          = image_tag 'material/logo/logo.png', height: '49', width: '185'
+        %p © FURIMA
