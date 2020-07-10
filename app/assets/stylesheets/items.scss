@@ -1,3 +1,65 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  box-sizing: border-box;
+}
+.DetailsContents{
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  &__header{
+    width: 100%;
+    border-top: 1px solid #eeeeee;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    position: relative;
+    background-color: #f8f8f8;
+    ul{
+      width: 100%;
+      max-width: 1040px;
+      font-size: 14px;
+      margin: 0 auto;
+      padding: 17px 0 16px;
+       ol,li{
+        padding: 0 10px 0 0;
+        float: left;
+        a{
+          text-decoration: none;
+          color: #333333;
+        }
+      }
+    }
+  }
+  .Main{
+    
+    background: #f8f8f8;
+    .showMain{
+      padding: 40px;
+      margin: 0 auto;
+      .contentRight{
+        width: 700px;
+        margin: 0 auto;
+        .topContent{
+          
+          .ItemBox{
+            background-color: #ffffff;
+            padding: 24px 40px 40px;
+            .ItemBox__name{
+            }
+            .ItemBox__body{
+            }
+            .ItemBox__price{
+              .itemBox__price-detail{
+              }
+            }
+            .ItemBox__table{
+            }
+            .ItemBox__optionalArea{
+
+            }
+          }
+  
+        }
+        .ContainerInner__form{
+  
+        }
+      }
+    }
+  }
+}
