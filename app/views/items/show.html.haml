@@ -31,9 +31,23 @@
                   = link_to "#" do
                     %i.fas.fa-flag
                     不適切な商品の通報
-        .DetailsInner__links
-          %p < 前の商品
-          %p 後ろの商品 >
-
+        %ul.links
+          %li
+            = link_to "#" do
+              %i.fas.fa-angle-left
+              %span 前の商品
+          %li
+            = link_to "#" do
+              %span 後ろの商品
+              %i.fas.fa-angle-right
         .DetailsInner__RelatedItems
-          %p もっと見る
+          = link_to "#" do
+            もっと見る
+  .appBanner
+    .inner
+      %h2.inner__title
+        誰でもかんたん、人生を変えるフリマアプリ
+      %p.inner__text
+        今すぐ無料ダウンロード
+      .inner__icon
+       
