@@ -1,4 +1,4 @@
-%nav.breadCrumbs
+%nav.DetailedCategories
   %ul
     %li
       = link_to '#' do
@@ -23,17 +23,17 @@
     %li
       %p 商品名
 
-.Main
-  .showMain
-    .contentRight
-      .topContent
+.DetailsContents
+  .DetailsContents__container
+    .DetailsInner
+      .DetailsInner__top
         .ItemBox
           .ItemBox__name
             %p 商品名
           .ItemBox__body
             %ul
               %li.top
-                = image_tag 'material/pict/a001.png', class:'topimg'
+                = image_tag 'material/pict/a001.png', class:'TopImage'
                 %ul
                   %li
                     = image_tag 'material/pict/a001.png'
@@ -44,7 +44,7 @@
             .itemBox__price-detail
               %span （税込）
               %span 送料込み
-          .itemDetail
+          .ItemDetail
             リンゴとハチミツは入っていません。
           .ItemBox__table
             %table
@@ -111,13 +111,10 @@
           = link_to "#" do
             %span 後ろの商品
             %i.fas.fa-angle-right
-      .DetailsInner__RelatedItems
+      .RelatedItems
         = link_to "#" do
           もっと見る
         .productLists
-          -# = image_tag 'material/pict/a003.png'
-            %figure.productList--img
-          
 .appBanner
   .inner
     %h2.inner__title

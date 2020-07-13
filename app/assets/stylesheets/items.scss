@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
 }
-.breadCrumbs{
+.DetailedCategories{
   width: 100%;
   border-top: 1px solid #eeeeee;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
@@ -28,26 +28,24 @@
     }
   }
 }
-.Main{
-  
+.DetailsContents{
   background: #f8f8f8;
-  .showMain{
+  &__container{
     padding: 40px;
     margin: 0 auto;
-    .contentRight{
+    .DetailsInner{
       width: 700px;
       margin: 0 auto;
-      .topContent{
-        
+      &__top{
         .ItemBox{
           background-color: #ffffff;
           padding: 24px 40px 40px;
-          .ItemBox__name{
+          &__name{
             text-align: center;
             font-weight: bold;
             font-size: 24px;
           }
-          .ItemBox__body{
+          &__body{
             margin: 16px 0 0;
             ul{
               display: flex;
@@ -58,7 +56,7 @@
                 width: 560px;
                 align-items: center;
                 margin: 0 auto;
-                .topimg{
+                .TopImage{
                   object-fit: cover;
                   height: 346px;
                 }
@@ -70,7 +68,7 @@
               }
             }
           }
-          .ItemBox__price{
+          &__price{
             margin: 24px 0 24px;
             text-align: center;
             display: flex;
@@ -80,16 +78,16 @@
               font-weight: bold;
               margin: 0 10px 0 0;
             }
-            .itemBox__price-detail{
+            &__price-detail{
               font-size: 16px;
             }
           }
-          .itemDetail{
+          .ItemDetail{
             line-height: 1.5;
             font-size: 18px;
             margin-bottom: 30px;
           }
-          .ItemBox__table{
+          &__table{
             table{
               width: 100%;
               height: 375px;
@@ -126,7 +124,7 @@
               }
             }
           }
-          .ItemBox__optionalArea{
+          &__optionalArea{
             display: flex;
             justify-content: space-between;
             ol,ul{
@@ -186,7 +184,7 @@
           float: right;
         }
       }
-      .DetailsInner__RelatedItems{
+      .RelatedItems{
         margin: 0;
         padding: 0;
         a{
