@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
   # アソシエーション
-  has_many :images, dependent: :destroy
-  accepts_nested_attributes_for :images, allow_destroy: true, update_only: true
-  validates_associated :images
+  validates :images, length: { minimum: 1, message: "を選択してください"}
+  has_many :images
+  accepts_nested_attributes_for :images, allow_destroy: true
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to_active_hash :prefecture
 
