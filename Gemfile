@@ -74,3 +74,4 @@ group :production do
   gem 'unicorn'
 end
 gem 'devise'
+gem 'payjp'
