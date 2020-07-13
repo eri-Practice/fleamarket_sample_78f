@@ -1,12 +1,12 @@
-.Contents
-  %header.Contents__header
+.SignInContents
+  %header.SignInContents__header
     = link_to "#" do
       = image_tag 'material/logo/logo.png', height: '49', width: '185'
-  .Contents__container
-    .ContainerInner
-      .ContainerInner__title
+  .SignInContents__container
+    .SignInContainerInner
+      .SignInContainerInner__title
         %h2 ログイン
-      .ContainerInner__form
+      .SignInContainerInner__form
         .LoginUser
           = form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f|
             .LoginUser__emailField
@@ -23,7 +23,7 @@
               = f.check_box :remember_me
             .Actions
               = f.submit "ログイン", class:"LoginBtn"
-  .Contents__footer
+  .SignInContents__footer
     .FooterInner
       %ul
         %li プライバシーポリシー

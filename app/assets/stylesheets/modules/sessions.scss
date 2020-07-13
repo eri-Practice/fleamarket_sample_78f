@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
 }
-.Contents {
+.SignInContents {
   background-color: #f8f8f8;
   min-height: 100vh;
   &__header {
@@ -10,7 +10,7 @@
   }
   &__container {
     width: 100%;
-    .ContainerInner{
+    .SignInContainerInner{
       background-color: #ffffff;
       width: 700px;
       margin: 0 auto;
@@ -60,6 +60,34 @@
               width: 100%;
             }
           }
+        }
+      }
+    }
+  }
+  &__footer{
+    .FooterInner{
+      width: 456px;
+      height: 140px;
+      margin:  0 auto;
+      padding: 40px 0;
+      text-align: center;
+      ol, ul{
+        position: relative;
+        left: 6%;
+        ol,li{
+            float: left;
+            font-size: 12px;
+            padding: 0 10px;
+          ol,a{
+            color: #333;
+            text-decoration: none;
+            display: inline-block;
+          }
+        }
+      }
+      &__logo{
+        ol,p{
+          font-size: 10px;
         }
       }
     }

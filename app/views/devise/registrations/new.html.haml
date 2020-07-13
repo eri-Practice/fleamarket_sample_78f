@@ -1,12 +1,12 @@
-.Contents
-  %header.Contents__header
+.SignUpContents
+  %header.SignUpContents__header
     = link_to "#" do
       = image_tag 'material/logo/logo.png', height: '49', width: '185'
-  .Contents__container
-    .ContainerInner
-      .ContainerInner__title
+  .SignUpContents__container
+    .SignUpContainerInner
+      .SignUpContainerInner__title
         %h2 新規会員登録
-      .ContainerInner__form
+      .SignUpContainerInner__form
         .NewUser
           = form_for(@user, url:user_registration_path, html: {method: 'post'}) do |f|
             = devise_error_messages!
@@ -119,7 +119,7 @@
                 = d.text_field :phone_number, class:"InputBox"
             .Actions
               = f.submit "登録", class:"NewUserBtn"
-  .Contents__footer
+  .SignUpContents__footer
     .FooterInner
       %ul
         %li プライバシーポリシー
