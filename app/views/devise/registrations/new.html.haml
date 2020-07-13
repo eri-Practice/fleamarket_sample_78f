@@ -1,0 +1,123 @@
+.Contents
+  %header.Contents__header
+    = link_to "#" do
+      = image_tag 'material/logo/logo.png', height: '49', width: '185'
+  .Contents__container
+    .ContainerInner
+      .ContainerInner__title
+        %h2 新規会員登録
+      .ContainerInner__form
+        .NewUser
+          = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
+            = devise_error_messages!
+            .NewUser__fieldTop
+              = f.label :ニックネーム
+              %span.formRequired 必須
+              %em
+              %br/
+              = f.text_field :nickname, autofocus: true, maxlength: "10", class:"InputBox"
+            .NewUser__field
+              = f.label :メールアドレス
+              %span.formRequired 必須
+              %br/
+              = f.email_field :email, class:"InputBox"
+            .NewUser__field
+              = f.label :パスワード
+              %span.formRequired 必須
+              - if @validatable
+                %em
+                  (#{@minimum_password_length} characters minimum)
+              %br/
+              = f.password_field :password, autocomplete: "off", class:"InputBox"
+            .NewUser__field
+              = f.label :パスワード・確認用
+              %span.formRequired 必須
+              %br/
+              = f.password_field :password_confirmation, autocomplete: "off", class:"InputBox"
+      
+            %h2.PersonalInformation 個人情報入力
+            %p 安全・安全にご利用いただくために、お客様の本人情報の登録にご協力ください。他のお客様に公開されることはありません
+            
+            =  f.fields_for :profile do |p|
+              .NewUser__field
+                = p.label :性
+                %span.formRequired 必須
+                %br/
+                = p.text_field :family_name, autofocus: true, class:"InputBox"
+                %p お名前（全角）
+              .NewUser__field
+                = p.label :名
+                %span.formRequired 必須
+                %br/
+                = p.text_field :first_name, autofocus: true, class:"InputBox"
+              %p お名前カナ（全角）
+              .NewUser__field
+                = p.label :性
+                %span.formRequired 必須
+                %br/
+                = p.text_field :family_name_kana, autofocus: true, class:"InputBox"
+              .NewUser__field
+                = p.label :名
+                %span.formRequired 必須
+                %br/
+                = p.text_field :first_name_kana, autofocus: true, class:"InputBox"
+              .NewUser__field
+                = p.label :生年月日
+                %span.formRequired 必須
+                %br/
+                = p.date_select :birth_date, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
+              %p ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+              
+              %h2.PersonalInformation 商品送付先住所情報
+              
+            =  f.fields_for :sending_destination do |d|
+              .NewUser__field
+                = d.label :性
+                %span.formRequired 必須
+                %br/
+                = d.text_field :destination_first_name, autofocus: true, class:"InputBox"
+                %p 送付先氏名（全角）
+              .NewUser__field
+                = d.label :名
+                %span.formRequired 必須
+                %br/
+                = d.text_field :destination_first_name, autofocus: true, class:"InputBox"
+              %p 送付先氏名カナ（全角）
+              .NewUser__field
+                = d.label :性
+                %span.formRequired 必須
+                %br/
+                = d.text_field :destination_family_name_kana, autofocus: true, class:"InputBox"
+              .NewUser__field
+                = d.label :名
+                %span.formRequired 必須
+                %br/
+                = d.text_field :destination_first_name_kana, autofocus: true, class:"InputBox"
+              .NewUser__field
+                = d.label :郵便番号
+                %span.formRequired 必須
+                = d.text_field :post_code, class:"InputBox"
+              .NewUser__field
+                = d.label :都道府県
+                %span.formRequired 必須
+                = d.text_field :prefecture_code, class:"InputBox"
+              .NewUser__field
+                = d.label :市区町村
+                %span.formRequired 必須
+                = d.text_field :city, class:"InputBox"
+              .NewUser__field
+                = d.label :番地
+                %span.formRequired 必須
+                = d.text_field :house_number, class:"InputBox"
+            .Actions
+              = f.submit "Sign up", class:"NewUserBtn"
+  .Contents__footer
+    .FooterInner
+      %ul
+        %li プライバシーポリシー
+        %li FURIMA利用規約
+        %li 特定商取引に関する表記
+      .FooterInner__logo
+        = link_to "#" do
+          = image_tag 'material/logo/logo.png', height: '49', width: '185'
+        %p © FURIMA
