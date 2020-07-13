@@ -31,15 +31,69 @@
           .ItemBox__name
             %p 商品名
           .ItemBox__body
-            %p 写真
+            %ul
+              %li.top
+                = image_tag 'material/pict/a001.png', class:'topimg'
+                %ul
+                  %li
+                    = image_tag 'material/pict/a001.png'
+                  %li
+                    = image_tag 'material/pict/a002.png'
+                  %li
+                    = image_tag 'material/pict/a003.png'
           .ItemBox__price
-            %span 1,000円
+            %p 1,000円
             .itemBox__price-detail
-              %span （税込み）
+              %span （税込）
               %span 送料込み
           .itemDetail
+            リンゴとハチミツは入っていません。
           .ItemBox__table
-            テスト
+            %table
+              %tbody
+                %tr
+                  %th
+                    出品者
+                  %td
+                    番長
+                %tr
+                  %th
+                    カテゴリー
+                  %td
+                    = link_to '#' do
+                      ベビー・キッズ
+                    %br/
+                    = link_to '#' do
+                      ベビー服（男の子用）~95cm
+                    %br/
+                    = link_to '#' do
+                      アウター
+                %tr
+                  %th
+                    商品サイズ
+                  %td
+                    
+                %tr
+                  %th
+                    商品の状態
+                  %td
+                    新品/未使用
+                %tr
+                  %th
+                    配送料の負担
+                  %td
+                    送料込み（出品者負担）
+                %tr
+                  %th
+                    発送元の地域
+                  %td
+                    = link_to '#' do
+                      石川県
+                %tr
+                  %th
+                    発送日の目安
+                  %td
+                    1-2日で発送
           .ItemBox__optionalArea
             %ul
               %li.optionalBtn.likeBtn

@@ -7,13 +7,13 @@
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   position: relative;
   padding: 0 60px;
-  .breadCrumbs.ul{
+  ul{
     padding: 17px 0 16px;
     width: 100%;
     max-width: 1040px;
     font-size: 14px;
-    margin: 0 auto;
-    ol,li{
+    height: 54px;
+    li{
       padding: 0 10px 0 0;
       float: left;
       a{
@@ -43,19 +43,89 @@
           background-color: #ffffff;
           padding: 24px 40px 40px;
           .ItemBox__name{
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
           }
           .ItemBox__body{
+            margin: 16px 0 0;
+            ul{
+              display: flex;
+              position: relative;
+              .top{
+                display: flex;
+                flex-direction: column;
+                width: 560px;
+                align-items: center;
+                margin: 0 auto;
+                .topimg{
+                  object-fit: cover;
+                  height: 346px;
+                }
+                ul{
+                  display: flex;
+                  justify-content: center;
+                  margin-top: 10px;
+                }
+              }
+            }
           }
           .ItemBox__price{
+            margin: 24px 0 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            p{
+              font-size: 46px;
+              font-weight: bold;
+              margin: 0 10px 0 0;
+            }
             .itemBox__price-detail{
+              font-size: 16px;
             }
           }
           .itemDetail{
+            line-height: 1.5;
+            font-size: 18px;
+            margin-bottom: 30px;
           }
           .ItemBox__table{
+            table{
+              width: 100%;
+              height: 375px;
+              border-collapse: collapse;
+              border: 1px solid #f8f8f8;
+              tbody{
+                display: table-row-group;
+                vertical-align: middle;
+                border-color: inherit;
+                tr{
+                  display: table-row;
+                  vertical-align: inherit;
+                  background-color: inherit;
+                  th{
+                    width: 20%;
+                    background-color: #eeeeee;
+                    font-weight: 400;
+                    padding: 8px;
+                    border: 1px solid #dedede;
+                    font-size: 14px;
+                    text-align: center;
+                  }
+                  td{
+                    width: 61%;
+                    padding: 15px 15px;
+                    border: 1px solid #dedede;
+                    font-size: 14px;
+                    a{
+                      text-decoration: none;
+                      color: #3ccace;
+                    }
+                  }
+                }
+              }
+            }
           }
-
-
           .ItemBox__optionalArea{
             display: flex;
             justify-content: space-between;
@@ -64,7 +134,7 @@
               margin-inline-end: 1em;
               margin-inline-start: 0px;
               margin-inline-end: 0px;
-              padding-inline-start: 40px;
+              padding-inline-start: 0px;
               .optionalBtn.likeBtn{
                 margin-right: auto;
                 padding: 6px 10px;
