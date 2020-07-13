@@ -8,7 +8,7 @@
         %h2 新規会員登録
       .ContainerInner__form
         .NewUser
-          = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
+          = form_for(@user, url:user_registration_path, html: {method: 'post'}) do |f|
             = devise_error_messages!
             .NewUser__fieldTop
               = f.label :ニックネーム
@@ -109,8 +109,16 @@
                 = d.label :番地
                 %span.formRequired 必須
                 = d.text_field :house_number, class:"InputBox"
+              .NewUser__field
+                = d.label :マンション・ビル名・部屋番号
+                %span.formRequired 任意
+                = d.text_field :building_name, class:"InputBox"
+              .NewUser__field
+                = d.label :電話番号
+                %span.formRequired 任意
+                = d.text_field :phone_number, class:"InputBox"
             .Actions
-              = f.submit "Sign up", class:"NewUserBtn"
+              = f.submit "登録", class:"NewUserBtn"
   .Contents__footer
     .FooterInner
       %ul

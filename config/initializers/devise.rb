@@ -1,11 +1,5 @@
 # frozen_string_literal: true
 
-# Assuming you have not yet modified this file, each configuration option below
-# is set to its default value. Note that some are commented out while others
-# are not: uncommented lines are intended to protect your configuration from
-# breaking changes in upgrades (i.e., in the event that future versions of
-# Devise change the default values for those options).
-#
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -14,6 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
+  # config.secret_key = '170c92c4c9643d2434fc41ca2885055fcf439c30a2fc17c1602ecbb0d9b1d095e8138e1ae92512e93c2d25f2edc8b33a54370cd4541dd974d58971b28ce51d53'
   # config.secret_key = '7b1eb46dc246209570bbe0a6934e7c833a16c32a5176f55842c2aac946e082ecb560dade26fce682b845a3b84e358c55728bc6f2a3b8126d4ab51c46b2f36d49'
 
   # ==> Controller configuration
@@ -74,6 +69,7 @@ Devise.setup do |config|
   # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
   # given strategies, for example, `config.http_authenticatable = [:database]` will
+  # enable it only for database authentication. The supported strategies are:
   # enable it only for database authentication.
   # For API-only applications to support authentication "out-of-the-box", you will likely want to
   # enable this with :database unless you are using a custom strategy.
@@ -112,6 +108,8 @@ Devise.setup do |config|
   # config.reload_routes = true
 
   # ==> Configuration for :database_authenticatable
+  # For bcrypt, this is the cost for hashing the password and defaults to 11. If
+  # using other algorithms, it sets how many times you want the password to be hashed.
   # For bcrypt, this is the cost for hashing the password and defaults to 12. If
   # using other algorithms, it sets how many times you want the password to be hashed.
   # The number of stretches used for generating the hashed password are stored
@@ -124,7 +122,11 @@ Devise.setup do |config|
   # algorithm), the cost increases exponentially with the number of stretches (e.g.
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
   config.stretches = Rails.env.test? ? 1 : 12
+  # エラー時下記の記述をオンにする
+  # config.stretches = Rails.env.test? ? 1 : 11
 
+
+  
   # Set up a pepper to generate the hashed password.
   # config.pepper = 'f4a3b33291423fb771f9494a6276f562fa3be1e715c19f4a9a829b98f6d78f7c207d486757547319bd41db38e45e22c927a7dd6444c71bafa049d7fd332f55fe'
 
@@ -178,7 +180,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 6..128
+  config.password_length = 7..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
