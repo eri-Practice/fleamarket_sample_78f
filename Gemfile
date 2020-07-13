@@ -77,13 +77,6 @@ gem 'pry-rails'
 group :production do
   gem 'unicorn'
 end
-
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'fog-aws'
-gem "haml-rails", ">= 1.0", '<= 2.0.1'
-gem 'font-awesome-sass'
-gem 'jquery-rails'
 gem 'active_hash'
 gem 'rails-i18n'
 gem 'devise'

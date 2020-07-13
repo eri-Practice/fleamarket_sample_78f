@@ -79,4 +79,22 @@ ActiveRecord::Schema.define(version: 2020_07_09_073646) do
 
   add_foreign_key "profiles", "users"
   add_foreign_key "sending_destinations", "users"
+# ActiveRecord::Schema.define(version: 2020_07_08_025714) do
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.text "text"
+    t.integer "price"
+    t.integer "category"
+    t.string "condition"
+    t.string "postage_payer"
+    t.integer "prefecture"
+    t.string "standby_day"
+    t.string "trading_status"
+    t.integer "seller"
+    t.integer "buyer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
 end
