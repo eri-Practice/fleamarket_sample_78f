@@ -39,8 +39,6 @@
                     = image_tag 'material/pict/a001.png'
                   %li
                     = image_tag 'material/pict/a002.png'
-                  %li
-                    = image_tag 'material/pict/a003.png'
           .ItemBox__price
             %p 1,000円
             .itemBox__price-detail
@@ -116,6 +114,10 @@
       .DetailsInner__RelatedItems
         = link_to "#" do
           もっと見る
+        .productLists
+          -# = image_tag 'material/pict/a003.png'
+            %figure.productList--img
+          
 .appBanner
   .inner
     %h2.inner__title
