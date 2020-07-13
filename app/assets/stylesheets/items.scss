@@ -7,13 +7,13 @@
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   position: relative;
   padding: 0 60px;
-  ul{
+  .breadCrumbs.ul{
     padding: 17px 0 16px;
     width: 100%;
     max-width: 1040px;
     font-size: 14px;
     margin: 0 auto;
-      ol,li{
+    ol,li{
       padding: 0 10px 0 0;
       float: left;
       a{
