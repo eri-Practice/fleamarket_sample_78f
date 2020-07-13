@@ -17,7 +17,5 @@ class Item < ApplicationRecord
   validates :standby_day, presence: true
   validates :trading_status, presence: true
   attribute :trading_status, default: '出品中'
-
-  # デバイス導入後に実装
-  # validates :seller, presence: true
+  validates :seller, presence: true
 end
