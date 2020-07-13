@@ -41,6 +41,28 @@ ActiveRecord::Schema.define(version: 2020_07_08_023259) do
     t.index ["user_id"], name: "index_sending_destinations_on_user_id"
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image_url"
+    t.integer "item_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.text "text"
+    t.integer "price"
+    t.integer "category"
+    t.string "condition"
+    t.string "postage_payer"
+    t.integer "prefecture_id"
+    t.string "standby_day"
+    t.string "trading_status"
+    t.integer "seller"
+    t.integer "buyer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
