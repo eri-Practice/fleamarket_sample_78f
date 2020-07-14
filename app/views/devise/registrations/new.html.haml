@@ -34,7 +34,6 @@
               %span.formRequired 必須
               %br/
               = f.password_field :password_confirmation, autocomplete: "off", class:"InputBox"
-      
             %h2.PersonalInformation 個人情報入力
             %p 安全・安全にご利用いただくために、お客様の本人情報の登録にご協力ください。他のお客様に公開されることはありません
             
@@ -75,7 +74,7 @@
                 = d.label :性
                 %span.formRequired 必須
                 %br/
-                = d.text_field :destination_first_name, autofocus: true, class:"InputBox"
+                = d.text_field :destination_family_name, autofocus: true, class:"InputBox"
                 %p 送付先氏名（全角）
               .NewUser__field
                 = d.label :名
