@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+  belongs_to :category
   # アソシエーション
   validates :images, length: { minimum: 1, message: "を選択してください"}
   has_many :images
