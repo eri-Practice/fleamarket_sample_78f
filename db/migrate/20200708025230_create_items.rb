@@ -8,10 +8,10 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :condition
       t.string :postage_payer
       t.integer :prefecture
-      t.string :standby_day	
+      t.string :standby_day
       t.string :trading_status
       t.integer :seller
-      t.integer :buyer	
+      t.integer :buyer
       t.timestamps
     end
   end
