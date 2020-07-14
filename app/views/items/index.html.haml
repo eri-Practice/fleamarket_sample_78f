@@ -7,6 +7,11 @@
         FURIMAはだれでもかんたんに出品・購入できる
         %br
           フリマアプリです
+      .Content__btn
+        = link_to "#" do
+          = image_tag 'material/icon/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34'
+        = link_to "#" do
+          = image_tag 'material/icon/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a'
   %section.topIntroduction
     %h2.topIntroduction__subtitle FURIMAが選ばれる3つの理由
     %ul.topIntroduction__lists
@@ -42,6 +47,11 @@
         FURIMAは、フリマアプリで最も人気。
         %br 出品・購入回数も業界最多です！
         ほしかったあの商品に出会えるかもしれません。
+      .btn
+        = link_to "#" do
+          = image_tag 'material/icon/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34'
+        = link_to "#" do
+          = image_tag 'material/icon/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a'
   %section.Topkeyfeatures
     %h2.Topkeyfeatures__head FURIMAの特徴
     .Topkeyfeatures__items
@@ -67,16 +77,14 @@
         =link_to root_path do
           %h3.title 新規投稿商品
       .productBox__Lists
-        .productBox__List
-          =link_to root_path do
-            %figure.productBox__List--img
-              = image_tag 'material/pict/pict-reason-03.jpg',class:'img'
-              - @items.each do |item|
-                = item.id
-            .productBox__List--body
-              %h3.name
-              - @items.each do |item|
-                = item.name
-              .details
-                - @items.each do |item|
-                  = item.price
+        - @items.each do |item|
+          = link_to item_path(item.id) do
+            .productBox__List
+              %figure.productBox__List--img
+                -# = image_tag item.image 商品投稿機能が出来たら
+                = image_tag 'material/pict/pict-reason-03.jpg', class:'img', width: "220px", hight: "150px"
+              .productBox__List--body
+                %h3.name
+                  = item.name
+                .details
+                  = "#{item.price}円"

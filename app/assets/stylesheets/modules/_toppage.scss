@@ -188,6 +188,11 @@
         bottom: 150px;
         left: 150px;
       }
+      .btn {
+        position: absolute;
+        bottom: 100px;
+        left: 150px;
+      }
     }
   }
   .Topkeyfeatures {
@@ -255,21 +260,71 @@
           font-size: 24px;
           font-weight: bold;
         }
-        a {
-          text-decoration: none;
-        }
       }
       &__Lists {
         width: 780px;
         margin: 26px auto;
         display: flex;
         justify-content: space-around;
-        &__List {
+      }
+      &__List {
+        width: 220px;
+        display: inline-block;
+        float: left;
+        background-color: #fff;
+        .productBox__List--img {
           width: 220px;
-          display: inline-block;
-          float: left;
-          background-color: #fff;
+          height: 150px;
+          position: relative;
+          overflow: hidden;
+          margin: 0;
+          z-index: auto;
         }
+        .productBox__List--body {
+          background-color: white;
+          color: #333;
+          padding: 16px;
+          .name {
+            overflow: hidden;
+            line-height: 1.5;
+            font-size: 16px;
+            text-align: left;
+          }
+          .details {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+.appBanner{
+  background-image: url(material/pict/bg-appBanner-pict.jpg);
+  padding: 100px 40px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  .inner{
+    color:#fff;
+    text-align: center;
+    &__title{
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+    &__text{
+      font-size: 35px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    &__icon{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20px auto 0;
+      a:first-child{
+        margin-right: 10px;
+
       }
     }
   }
