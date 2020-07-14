@@ -25,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(user_params)
-    @user.save!
+    @user.save
   end
 
   def after_sign_up_path_for(resource)
