@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new 
     @item.images.new
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def create
@@ -15,6 +16,11 @@ class ItemsController < ApplicationController
       @item.images.new
       render :new
     end
+
+    # def category
+    #   @parents = Category.all.order("id ASC").limit(13)
+    # end
+
   end
 
   private
