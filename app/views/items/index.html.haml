@@ -81,8 +81,8 @@
           = link_to item_path(item.id) do
             .productBox__List
               %figure.productBox__List--img
-                -# = image_tag item.image 商品投稿機能が出来たら
-                = image_tag 'material/pict/pict-reason-03.jpg', class:'img', width: "220px", hight: "150px"
+                = image_tag item.images[0].image_url.url, class:'img', width: "220px", hight: "150px"
+                -#商品投稿機能が出来たらDBに直接画像を入れなくて良い
               .productBox__List--body
                 %h3.name
                   = item.name
