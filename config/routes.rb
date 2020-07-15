@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
-  get "users/show"
-  get "users/logout"
-  get "users/credit_card"
+
+  resources :users, only: [:show, :index, :new, :create] do
+    collection do
+      get:logout
+      get:credit_card
+    end
+  end
 
   devise_for :users,  :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
    }
-  resources :users 
   root "items#index"
   resources :items do
     collection do
