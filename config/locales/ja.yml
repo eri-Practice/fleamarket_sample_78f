@@ -1,5 +1,21 @@
 ja:
   activerecord:
+    models:
+      item: 商品
+      item/images: 画像
+    attributes:
+      item:
+        name: 商品名
+        text: 商品説明
+        category: カテゴリー
+        condition: 商品の状態
+        postage_payer: 配送料の負担
+        prefecture_id: 発送元の地域
+        standby_day: 発送までの日数
+        price: 値段
+        images: 画像
+      item/images:
+        image_url: 画像
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
