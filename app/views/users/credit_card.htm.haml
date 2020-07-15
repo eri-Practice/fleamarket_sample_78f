@@ -1,0 +1,7 @@
+.MypageContents
+  =render 'users/show'
+  .MypageContents__container
+    %form.MypageContents__container--inner
+      .MypageContents__container--inner--content
+        = link_to "クレジットカードを追加", _path, , class: 'mypage-button'
+-# クレジットカード機能はマイページマークアップでは追加しないためビューのみ記述しておく
