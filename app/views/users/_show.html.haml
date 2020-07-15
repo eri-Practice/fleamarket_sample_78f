@@ -1,0 +1,11 @@
+.MypageContents__side
+  .MypageContents__side--nav
+    %ul.MypageContents__side--nav--list
+      %li.MypageContents__side--nav--list--item
+        = link_to "商品一覧", items_path
+      %h3.Mypage-nav-head 設定
+    %ul.MypageContents__side--nav--list
+      %li.MypageContents__side--nav--list--item
+        = link_to "ログアウト", logout_users_path
+      %li.MypageContents__side--nav--list--item
+        = link_to "支払い方法", credit_card_users_path
