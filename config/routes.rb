@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+
+  devise_for :users,  :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
+   }
+   
   resources :users, only: [:show, :index, :new, :create] do
     collection do
       get:logout
@@ -7,10 +13,6 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users,  :controllers => {
-    :registrations => 'users/registrations',
-    :sessions => 'users/sessions'
-   }
   root "items#index"
   resources :items do
     collection do
