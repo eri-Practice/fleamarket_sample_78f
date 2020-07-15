@@ -1,0 +1,8 @@
+.MypageContents
+  =render 'users/show'
+  .MypageContents__user
+    %section.MypageContents__user--icon
+      = image_tag '//static.mercdn.net/images/member_photo_noimage_thumb.png', alt: '60', height: '60'
+      %h2.name
+        = current_user.nickname 
+        %pさんのマイページ
