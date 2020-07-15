@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit]
-  before_action :move_to_index, only: [:edit]
+  before_action :set_item, only: [:edit, :update]
+  before_action :move_to_index_except_signed_in_user, only: [:new, :create]
+  before_action :move_to_index_except_seller, only: [:edit, :update]
 
   def index
   end
@@ -24,7 +25,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path, notice: '商品を編集しました'
     else
@@ -42,7 +42,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
   
-  def move_to_index
-    redirect_to action: :index unless user_signed_in? && current_user.id == @item.seller
+  def move_to_index_except_signed_in_user
+    redirect_to root_path, notice: 'ログインしてください' unless user_signed_in?
+  end
+
+  def move_to_index_except_seller
+    redirect_to root_path, notice: '商品の編集は出品者のみが可能です' unless user_signed_in? && current_user.id == @item.seller
   end
 end
