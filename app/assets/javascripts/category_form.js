@@ -7,6 +7,13 @@ $(function(){
       </select>`
     return child_select;
   }
+  function build_gcSelect() {
+    let gc_select = `
+              <select name="post[category_id]" class="gc_category_id">
+              </select>
+              `
+    return gc_select;
+  }
   // selectタグにoptionタグを追加
   function build_Option(children) {
     let option_html =
@@ -16,7 +23,6 @@ $(function(){
   $("#parent-form").change(function () {
     // 選択した親の値を取得する
     let parentValue = $(this).val();
-      console.log(parentValue);
     // 初期値("---")以外を選択したらajaxを開始
     if (parentValue.length != 0) {
       $.ajax({
@@ -27,10 +33,8 @@ $(function(){
       dataType: 'json'
       })
       .done(function (data) {
-        console.log(data);
          // selectタグを生成してビューにappendする
         let child_select = build_childSelect()
-          console.log(child_select);
         $("#parent-form").after(child_select);
         // jbuilderから取得したデータを1件ずつoptionタグにappendする
         data.forEach(function (d) {
@@ -38,9 +42,37 @@ $(function(){
           $(".child_category_id").append(option_html);
         })
       })
+    }
+  });
+    // 子セレクトを変更したらjQueryが発火する
+  $(document).on("change", ".child_category_id", function () {
+
+    // 選択した子の値を取得する
+    let childValue = $(".child_category_id").val();
+    // 初期値("---")以外を選択したらajaxを開始
+    if (childValue.length != 0) {
+      $.ajax({
+        url: '/items/category',
+        type: 'GET',
+        // postsコントローラーにparamsをchildren_idで送る
+        data: { children_id: childValue },
+        dataType: 'json'
+      })
+      .done(function (gc_data) {
+       
+        // selectタグを生成してビューにappendする
+        let gc_select = build_gcSelect()
+        $(".child_category_id").after(gc_select);
+        // jbuilderから取得したデータを1件ずつoptionタグにappendする
+        gc_data.forEach(function (gc_d) {
+          let option_html = build_Option(gc_d);
+          
+          $(".gc_category_id").append(option_html);
+        });
+      })
       .fail(function () {
         alert("通信エラーです！");
       });
     }
-  });
+  })
 })
