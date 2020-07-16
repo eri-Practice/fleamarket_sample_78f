@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new 
-    @item.images.new
+    @item.images.build
   end
 
   def create
@@ -16,7 +16,6 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path, notice: '商品を出品しました'
     else
-      @item.images.new
       render :new
     end
   end
@@ -34,9 +33,10 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :text, :price, :category, :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status, :seller, :buyer, images_attributes: [:image_url]).merge(seller: current_user.id)
+    params.require(:item).permit(
+      :name, :text, :price, :category, :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status, :seller, :buyer,
+      images_attributes: [:image_url]).merge(seller: current_user.id)
   end
-
   
   def set_item
     @item = Item.find(params[:id])
