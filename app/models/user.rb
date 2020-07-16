@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
   has_one :profile, dependent: :destroy
   has_one :sending_destination, dependent: :destroy
+  has_many :seller_items, foreign_key: "seller_id", class_name: "items"
   accepts_nested_attributes_for :profile
   accepts_nested_attributes_for :sending_destination
   
