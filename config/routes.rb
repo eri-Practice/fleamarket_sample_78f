@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'items/index'
   # resources :users
-  resources :images
 
   devise_for :users,  :controllers => {
     :registrations => 'users/registrations',
