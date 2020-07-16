@@ -232,40 +232,22 @@
   }
 }
 
-// item #new 
-.img_box_boxs {
+// 出品/商品編集・フォーム画面
+#previews {
   display: flex;
-  justify-content: space-between;
-  .img_box {
+  // justify-content: start;
+  .previewImage {
     width: 120px;
     height: 120px;
-    border: 1px dashed #ccc;
-    background: #f5f5f5;
-    margin-bottom: 10px;
-    .photo_img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-    }
+    object-fit: cover;
+    margin-right: 20px;
   }
 }
-.photo_form_box {
+.file_groups {
   display: flex;
-  justify-content: space-between;
-  .photo_display {
-    width: 120px;
+  justify-content: space-evenly;
+  .js-file_group {
     text-align: center;
-    .image_label {
-      display: block;
-      background-color: #3CCACE;
-      margin-bottom: 5px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .remove_btn {
-      background-color: #ffb340;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+    display: inline-block;
   }
 }
