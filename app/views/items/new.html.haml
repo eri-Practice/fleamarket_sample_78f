@@ -14,38 +14,19 @@
       .FormItem
         .FormItem__title= label :image, '商品画像'
         %p 最大４枚までアップロードできます
-        .photo_form
-          = f.fields_for :images do |i|
-            .img_box_boxs
-              .img_box1.img_box
-              .img_box2.img_box
-              .img_box3.img_box
-              .img_box4.img_box
-            .photo_form_box
-              .photo_display1.photo_display
-                = i.label :image_url, class: "image_label", for: "image", id: "photo"  do
-                  = i.file_field :image_url, name: "item[images_attributes][0][image_url]", multipart: true, class: "file_field1", id: "image", style: "display:none"
-                  選択
-                .remove_btn1.remove_btn
-                  削除
-              .photo_display2.photo_display
-                = i.label  :image_url, class: "image_label", for: "image2", id: "photo2" do
-                  = i.file_field :image_url, name: "item[images_attributes][1][image_url]", multipart: true, class: "file_field2", id: "image2", style: "display:none"
-                  選択
-                .remove_btn2.remove_btn
-                  削除
-              .photo_display3.photo_display
-                = i.label :image_url, class: "image_label", for: "image3", id: "photo3" do
-                  = i.file_field :image_url, name: "item[images_attributes][2][image_url]", multipart: true, class: "file_field3", id: "image3", style: "display:none"
-                  選択
-                .remove_btn3.remove_btn
-                  削除
-              .photo_display4.photo_display
-                = i.label :image_url, class: "image_label", for: "image4", id: "photo4" do
-                  = i.file_field :image_url, name: "item[images_attributes][3][image_url]", multipart: true, class: "file_field4", id: "image4", style: "display:none"
-                  選択
-                .remove_btn4.remove_btn
-                  削除
+        
+        #image-box
+          = f.fields_for :images do |image|
+            .js-file_group{data: { index: image.index }}
+              = image.file_field :image_url, class: 'js-file'
+              .js-remove 削除
+            - if @item.persisted?
+              = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+          - if @item.persisted?
+            .js-file_group{data: { index: @item.images.count }}
+              = file_field_tag :image_url, name: "item[images_attributes][#{@item.images.count}][image_url]", class: 'js-file'
+              .js-remove 削除
+           
       .FormItem
         .FormItem__title= label :name, '商品名'
         = f.text_field :name, class: "FormItem__input", placeholder: "商品名を入力"

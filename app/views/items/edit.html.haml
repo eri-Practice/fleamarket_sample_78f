@@ -1,3 +1,56 @@
-.SettingGroupForm
-  %h1 チャットグループ編集
-  = render partial: 'form', locals: { item: @item }
+.LogoContainer
+  %h1 投稿を編集する
+.FormContainer
+  .FormWrapper
+  .FormList
+    = form_with model: @item, local: true, class:"Form" do |f|
+      .FormItem
+        - if @item.errors.any?
+          .SettingItemForm__errors
+            %h2= "#{@item.errors.full_messages.count}件のエラーが発生しました。"
+            %ul
+              - @item.errors.full_messages.each do |message|
+                %li= message
+      .FormItem
+        .FormItem__title= label :image, '商品画像'
+        %p 最大４枚までアップロードできます
+
+        #image-box
+          = f.fields_for :images do |image|
+            .js-file_group{data: { index: image.index }}
+              = image.file_field :image_url, class: 'js-file'
+              .js-remove 削除
+            - if @item.persisted?
+              = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+          - if @item.persisted?
+            .js-file_group{data: { index: @item.images.count }}
+              = file_field_tag :image_url, name: "item[images_attributes][#{@item.images.count}][image_url]", class: 'js-file'
+              .js-remove 削除
+              
+      .FormItem
+        .FormItem__title= label :name, '商品名'
+        = f.text_field :name, class: "FormItem__input", placeholder: "商品名を入力"
+      .FormItem
+        .FormItem__title= label :text, '商品説明'
+        = f.text_area :text, class: 'FormItem__input inputtext', placeholder: "商品説明を入力"
+      .FormItem
+        .FormItem__title= label :category, 'カテゴリー'
+        = f.select :category, [["服", 0],["おもちゃ", 1]], include_blank: "選択して下さい", class: 'FormItem__input'
+      .FormItem
+        .FormItem__title= label :condition, '商品の状態'
+        = f.select :condition, [["新品、未使用", "新品、未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や]汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷]や汚れあり"],["全体的に状態が悪い", "全体]的に状態が悪い"]], include_blank: "選択して下さい", class: 'FormItem__input'
+      .FormItem
+        .FormItem__title= label :postage_payer, '配送料の負担'
+        = f.select :postage_payer, [["送料込み(出品者負担)", "送料込み(出品者負担)"],["着払い(購入者負担)", "着払い(購入者負担)"]], include_blank: "選択して下さい", class: 'FormItem__input'
+      .FormItem
+        .FormItem__title= label :prefecture_id, '発送元の地域'
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい", class: 'FormItem__input'
+      .FormItem
+        .FormItem__title= label :standby_day, '発送までの日数'
+        = f.select :standby_day, [["１〜２日で発送", "１〜２日で発送"],["２〜３日で発送", "２〜３日で発送"],["４〜７日で発送", "４〜７日で発送"]], include_blank: "選択して下さい", class: 'FormItem__input'
+      .FormItem
+        .FormItem__title= label :price, '値段'
+        = f.text_field :price, class: "FormItem__input", placeholder: "値段を入力"
+      .FormItem
+        .Form__sendBtn
+          = f.submit "出品する", class: "btn"
