@@ -5,15 +5,16 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new 
     @item.images.new
-    @parents = Category.all.order("id ASC").limit(13)
+    # @parents = Category.all.order("id ASC").limit(13)
     @parents = Category.where(ancestry: nil)
+    
   end
-  def search
+  def category
     respond_to do |format|
       format.html
       format.json do
-       @children = Category.find(params[:parent_id]).children
-       #親ボックスのidから子ボックスのidの配列を作成してインスタンス変数で定義
+        @children = Category.find(params[:parent_id]).children
+        #親ボックスのidから子ボックスのidの配列を作成してインスタンス変数で定義
       end
     end
   end
