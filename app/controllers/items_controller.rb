@@ -1,13 +1,13 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :update]
+  before_action :set_item, except: [:index, :new, :create]
   before_action :move_to_index_except_signed_in_user, only: [:new, :create]
   before_action :move_to_index_except_seller, only: [:edit, :update]
   
   def index
+    @items = Item.all
   end
   
   def show
-    @item = Item.find(params[:id])
   end
 
   def new
@@ -33,7 +33,6 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
-  end
 
   def destroy
     if@item.destroy
@@ -46,10 +45,10 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(
-      :name, :text, :price, :category, :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status, :seller, :buyer,
+      :name, :text, :price, :category, :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status,
       images_attributes: [:image_url, :_destroy, :id]).merge(seller: current_user.id)
   end
-  
+
   def set_item
     @item = Item.find(params[:id])
   end

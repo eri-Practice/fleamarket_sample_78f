@@ -1,0 +1,8 @@
+.MypageContents
+  =render 'users/show'
+  .MypageContents__container
+    %form.MypageContents__container--inner
+      .MypageContents__container--inner--content
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'mypage-button'
+
+
