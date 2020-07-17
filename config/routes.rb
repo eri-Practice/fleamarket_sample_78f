@@ -5,14 +5,19 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
    }
 
+
+  devise_for :users,  :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
+   }
+
   resources :users, only: [:show, :index, :new, :create] do
     collection do
       get:logout
       get:credit_card
     end
   end
-  
-  
+
   root "items#index"
   resources :items do
     collection do

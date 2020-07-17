@@ -105,12 +105,13 @@
                 = link_to "#" do
                   %i.fas.fa-flag
                   不適切な商品の通報
-        - if user_signed_in? && @item.seller== current_user.id
+        - if user_signed_in? && @item.seller_id== current_user.id
           = link_to '商品の編集', edit_item_path(@item.id), method: :get, class:'EditBtn'
           = link_to '商品を削除する', item_path(@item.id), method: :delete, class:'EditBtn'
-        - unless user_signed_in? && @item.seller== current_user.id
+        - unless user_signed_in? && @item.seller_id== current_user.id
           = link_to '購入画面に進む', root_path(@item.id), method: :get, class:'EditBtn'
           //pathは購入機能実装時にroot_pathから変更する
+
       %ul.links
         %li
           = link_to "#" do

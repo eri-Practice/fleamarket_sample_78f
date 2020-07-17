@@ -1,11 +1,13 @@
 class ItemsController < ApplicationController
+  before_action :set_item, except: [:index, :new, :create]
+
   def index
     @items = Item.all
   end
 
   def new
     @item = Item.new 
-    @item.images.new
+    @item.images.build
   end
 
   def create
@@ -18,14 +20,28 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def  show
     @item = Item.find(params[:id])
     @profile = Profile.find(params[:id])
   end
 
+  def destroy
+    if@item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+
+  end
+
   private
   def item_params
-    params.require(:item).permit(:name, :text, :price, :category, :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status, :seller, :buyer, images_attributes: [:image_url]).merge(seller: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :category, :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status, images_attributes: [:image_url]).merge(seller_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
