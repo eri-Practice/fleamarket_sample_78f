@@ -2,8 +2,12 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update]
   before_action :move_to_index_except_signed_in_user, only: [:new, :create]
   before_action :move_to_index_except_seller, only: [:edit, :update]
-
+  
   def index
+  end
+  
+  def show
+    @item = Item.find(params[:id])
   end
 
   def new
@@ -28,6 +32,14 @@ class ItemsController < ApplicationController
       redirect_to root_path, notice: '商品を編集しました'
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if@item.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
