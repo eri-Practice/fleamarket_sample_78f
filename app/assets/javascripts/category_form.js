@@ -9,7 +9,7 @@ $(function(){
   }
   function build_gcSelect() {
     let gc_select = `
-              <select name="post[category_id]" class="gc_category_id">
+              <select name="item[category_id]" class="gc_category_id">
               </select>
               `
     return gc_select;

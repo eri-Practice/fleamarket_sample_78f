@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_07_14_015909) do
     t.string "name"
     t.text "text"
     t.integer "price"
-    t.integer "category"
+    t.integer "category_id"
     t.string "condition"
     t.string "postage_payer"
     t.integer "prefecture_id"

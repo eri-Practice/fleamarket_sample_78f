@@ -9,11 +9,15 @@ class ItemsController < ApplicationController
     @parents = Category.where(ancestry: nil)
     
   end
+
+  def show
+    @item = Item.find(params[:id])
+  end
+
   def category
     respond_to do |format|
       format.html
       format.json do
-        # @children = Category.find(params[:parent_id]).children
         #親ボックスのidから子ボックスのidの配列を作成してインスタンス変数で定義
         if params[:parent_id]
           @children = Category.find(params[:parent_id]).children
@@ -38,7 +42,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :text, :price, :category, :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status, :seller, :buyer, images_attributes: [:image_url]).merge(seller: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :category_id,  :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status, :seller, :buyer, images_attributes: [:image_url]).merge(seller: current_user.id)
   end
 
 end
