@@ -20,8 +20,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
+
+  def  show
     @item = Item.find(params[:id])
+    @profile = Profile.find(params[:id])
   end
 
   def destroy
@@ -30,6 +32,7 @@ class ItemsController < ApplicationController
     else
       render :show
     end
+
   end
 
   private
