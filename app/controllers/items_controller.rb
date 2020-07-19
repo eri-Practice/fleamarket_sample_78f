@@ -5,13 +5,14 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new 
     @item.images.new
-    # @parents = Category.all.order("id ASC").limit(13)
     @parents = Category.where(ancestry: nil)
     
   end
 
   def show
     @item = Item.find(params[:id])
+    @profile = Profile.find(params[:id])
+    @category_name = Category.find(params[:id])
   end
 
   def category
@@ -38,11 +39,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  
-
   private
   def item_params
     params.require(:item).permit(:name, :text, :price, :category_id,  :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status, :seller, :buyer, images_attributes: [:image_url]).merge(seller: current_user.id)
   end
-
 end

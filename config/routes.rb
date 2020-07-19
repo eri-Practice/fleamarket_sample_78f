@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
-  get 'items/index'
-  # resources :users
-
   devise_for :users,  :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
    }
+  resources :users, only: [:show, :index, :new, :create] do
+    collection do
+      get:logout
+      get:credit_card
+    end
+  end
 
-    root "items#index"
+  root "items#index"
   resources :items do
     collection do
       get 'search'
@@ -16,6 +19,4 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
-
 end
-

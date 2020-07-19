@@ -53,19 +53,18 @@
                   %th
                     出品者
                   %td
-                    番長
+                    = @profile.family_name
+                    = @profile.first_name
                 %tr
                   %th
                     カテゴリー
-                  %td
-                    = link_to '#' do
-                      ベビー・キッズ
-                    %br/
-                    = link_to '#' do
-                      ベビー服（男の子用）~95cm
-                    %br/
-                    = link_to '#' do
-                      アウター
+                  %td.category
+                    = link_to @item.category.root.name, "#"
+                    %br
+                    = link_to ">#{@item.category.parent.name}", "#"
+                    %br
+                    = link_to ">#{@item.category.name}", "#"
+                    
                 %tr
                   %th
                     商品サイズ
