@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_07_17_012342) do
     t.integer "prefecture_id"
     t.string "standby_day"
     t.string "trading_status"
+    t.integer "seller"
     t.integer "buyer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
