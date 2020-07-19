@@ -1,8 +1,16 @@
 require 'rails_helper'
 describe Item do
   describe '#create' do
+
     it "必須項目の記入で保存ができる" do
-      expect(build(:item)).to be_valid
+      item = build(:item)
+      expect(item).to be_valid
+    end
+    
+    it "画像がないと出品不可" do
+      item = build(:item, images: [])
+      item.valid?
+      expect(item.errors[:images]).to include("を選択してください")
     end
 
     it "nameがないと出品不可" do
