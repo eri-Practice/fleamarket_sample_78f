@@ -215,7 +215,7 @@
     }
   }
 }
-
+// 商品出品ページ
 .ExhibitionContainer{
   background-color: #f8f8f8;
   .LogoContainer{
@@ -274,6 +274,20 @@
             padding: 0 16px;
             width: 100%;
           }
+          .Form__sendBtn{
+            width: 360px;
+            margin: 0px auto 32px;
+            .ExhibitionBtn{
+              background: #3ccace;
+              border: 1px solid #3ccace;
+              color: #fff;
+              width: 100%;
+              font-size: 17px;
+              min-height: 48px;
+              padding: 0 24px;
+              
+            }
+          }
         }
       }
     }
@@ -281,6 +295,9 @@
 
   }
 }
+
+// 商品出品ページここまで
+
 .appBanner{
   background-image: url(material/pict/bg-appBanner-pict.jpg);
   padding: 100px 40px;
