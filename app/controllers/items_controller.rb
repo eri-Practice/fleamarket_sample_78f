@@ -7,8 +7,6 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
   
-  def show
-  end
 
   def new
     @item = Item.new 
@@ -18,7 +16,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @profile = Profile.find(params[:id])
     @category = Category.find(params[:id])
   end
@@ -51,7 +48,6 @@ class ItemsController < ApplicationController
 
 
   def  show
-    @item = Item.find(params[:id])
     @user = User.find(current_user.id)
   end
 
@@ -69,6 +65,11 @@ class ItemsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def buy
+    @user = current_user
+    @sending_destination  = SendingDestination.where(user_id: current_user.id).first
   end
 
   private
