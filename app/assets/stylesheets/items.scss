@@ -238,8 +238,17 @@
         .FormItem{
           border-top: 1px solid #f8f8f8;
           padding: 20px;
+         
           &__title{
 
+          }
+          &__Required{
+            background-color: #3ccace;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 2px;
+            padding: 0 2px;
+            display: inline-block;
           }
           &__input{
             border: 1px solid #ccc;
@@ -250,6 +259,19 @@
             margin: 0;
             outline: none;
             padding: 0 16px;
+            width: 100%;
+          }
+          &__inputText{
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            color: #222222;
+            font-size: 16px;
+            margin: 0;
+            outline: none;
+            padding: 13px 16px;
+            resize: vertical;
+            vertical-align: middle;
             width: 100%;
           }
           .child_category_id{
@@ -264,6 +286,17 @@
             width: 100%;
           }
           .gc_category_id{
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: inherit;
+            font-size: inherit;
+            height: 48px;
+            margin: 0;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+          }
+          select{
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: inherit;
