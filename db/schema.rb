@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 2020_07_17_012342) do
     t.integer "prefecture_id"
     t.string "standby_day"
     t.string "trading_status"
-    t.integer "seller"
-    t.integer "buyer"
+    t.bigint "seller_id", null: false
+    t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "seller_id"
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_07_17_012342) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "sending_destinations", "users"

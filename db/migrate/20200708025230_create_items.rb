@@ -10,8 +10,8 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :prefecture
       t.string :standby_day
       t.string :trading_status
-      t.integer :seller
-      t.integer :buyer
+      t.references :seller, null: false, foreign_key: { to_table: :users }
+      t.references :buyer, foreign_key: { to_table: :users }
       t.timestamps
     end
   end
