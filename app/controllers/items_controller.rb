@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :category, :buy]
+  before_action :set_item, except: [:index, :new, :create, :category,:buy]
   before_action :move_to_index_except_signed_in_user, only: [:new, :create]
   before_action :move_to_index_except_seller, only: [:edit, :update]
   
@@ -7,8 +7,6 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
   
-  def show
-  end
 
   def new
     @item = Item.new 
@@ -18,7 +16,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @profile = Profile.find(params[:id])
     @category = Category.find(params[:id])
   end
@@ -51,7 +48,6 @@ class ItemsController < ApplicationController
 
 
   def  show
-    @item = Item.find(params[:id])
     @user = User.find(current_user.id)
   end
 
@@ -72,7 +68,6 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    @item = Item.find(params[:id])
     @user = current_user
     @sending_destination  = SendingDestination.where(user_id: current_user.id).first
   end
