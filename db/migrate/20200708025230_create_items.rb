@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :name
       t.text :text
       t.integer :price
-      t.integer :category
+      t.integer :category_id, foreign_key: true
       t.string :condition
       t.string :postage_payer
       t.integer :prefecture
