@@ -1,20 +1,34 @@
 .FormWrapper
   .FormList
     = form_with model: @item, local: true, class:"Form" do |f|
-      - if @item.errors.any?
-        .SettingItemForm__errors
-          %h2= "#{@item.errors.full_messages.count}件のエラーが発生しました。"
-          %ul
-            - @item.errors.full_messages.each do |message|
-              %li= message
+      .FormItem
+        - if @item.errors.any?
+          .SettingItemForm__errors
+            %h2= "#{@item.errors.full_messages.count}件のエラーが発生しました。"
+            %ul
+              - @item.errors.full_messages.each do |message|
+                %li= message
       .FormItem
         .FormItem__title= label :image, '商品画像'
         %p 最大４枚までアップロードできます
-        = f.fields_for :images do |i|
-          = i.file_field :image_url, class: "hidden-field"
-          %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image_url]", id: "item_images_attributes_1_image" }
-          %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image_url]", id: "item_images_attributes_2_image" }
-          %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image_url]", id: "item_images_attributes_3_image" }
+        
+        #image-box
+          #previews
+            - if @item.persisted?
+              - @item.images.each_with_index do |image, i|
+                = image_tag image.image_url.url, data: { index: i }, class: "previewImage"
+
+          = f.fields_for :images do |image|
+            .js-file_group{data: { index: image.index }}
+              = image.file_field :image_url, class: 'js-file'
+              .js-remove 削除
+            - if @item.persisted?
+              = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+          - if @item.persisted? && @item.images.count <= 3
+            .js-file_group{data: { index: @item.images.count }}
+              = file_field_tag :image_url, name: "item[images_attributes][#{@item.images.count}][image_url]", class: 'js-file'
+              .js-remove 削除
+           
       .FormItem
         .FormItem__title= label :name, '商品名'
         = f.text_field :name, class: "FormItem__input", placeholder: "商品名を入力"
