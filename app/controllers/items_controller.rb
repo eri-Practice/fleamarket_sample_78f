@@ -61,6 +61,7 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
 
   def destroy
     if@item.destroy
@@ -68,7 +69,6 @@ class ItemsController < ApplicationController
     else
       render :show
     end
-
   end
 
   private
@@ -87,7 +87,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index_except_seller
-    redirect_to root_path, notice: '商品の編集は出品者のみが可能です' unless user_signed_in? && current_user.id == @item.seller
+    redirect_to root_path, notice: '商品の編集は出品者のみが可能です' unless user_signed_in? && current_user.id == @item.seller_id
   end
 
 end
