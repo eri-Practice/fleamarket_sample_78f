@@ -37,6 +37,16 @@
       width: 700px;
       margin: 0 auto;
       &__top{
+        .EditBtn {
+          display: block;
+          margin-top: 16px;
+          background: #3ccace;
+          color: #fff;
+          text-align: center;
+          font-weight: 600;
+          transition: all ease-out .3s;
+          text-decoration: none;
+        }
         .ItemBox{
           background-color: #ffffff;
           padding: 24px 40px 40px;
@@ -64,6 +74,13 @@
                   display: flex;
                   justify-content: center;
                   margin-top: 10px;
+                }
+                li {
+                  margin-right: 10px;
+                }
+                .BottomImage {
+                  height: 87px;
+                  
                 }
               }
             }
@@ -156,8 +173,6 @@
                   color: #333;
                   border: 1px solid #333;
                   text-decoration: none;
-                  .fas.fa-flag{
-                  }
                 }
               }
             }
@@ -200,6 +215,72 @@
     }
   }
 }
+
+.ExhibitionContainer{
+  background-color: #f8f8f8;
+  .LogoContainer{
+    width: 700px;
+    margin: 0 auto;
+      &__title{
+        padding: 32px 16px;
+        font-size: 22px;
+        text-align: center;
+        font-weight: bold;
+      }
+  }
+  .FormContainer{
+    width: 700px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-top: 1px solid #f8f8f8;
+    .FormWrapper{
+      .FormList{
+        .FormItem{
+          border-top: 1px solid #f8f8f8;
+          padding: 20px;
+          &__title{
+
+          }
+          &__input{
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: inherit;
+            font-size: inherit;
+            height: 48px;
+            margin: 0;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+          }
+          .child_category_id{
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: inherit;
+            font-size: inherit;
+            height: 48px;
+            margin: 0;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+          }
+          .gc_category_id{
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: inherit;
+            font-size: inherit;
+            height: 48px;
+            margin: 0;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  
+
+  }
+}
 .appBanner{
   background-image: url(material/pict/bg-appBanner-pict.jpg);
   padding: 100px 40px;
@@ -231,3 +312,23 @@
     }
   }
 }
+
+// 出品/商品編集・フォーム画面
+#previews {
+  display: flex;
+  .previewImage {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+}
+.file_groups {
+  display: flex;
+  justify-content: space-evenly;
+  .js-file_group {
+    text-align: center;
+    display: inline-block;
+  }
+}
+
