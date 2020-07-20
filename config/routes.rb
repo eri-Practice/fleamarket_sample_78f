@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       get 'search'
     end
     member do
-      get 'purchase'
+      get 'buy', to: 'items#buy'
     end
   end
 

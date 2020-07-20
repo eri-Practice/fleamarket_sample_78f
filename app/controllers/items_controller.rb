@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, except: [:index, :new, :create, :purchase]
 
   def index
     @items = Item.all
@@ -30,6 +30,12 @@ class ItemsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def buy
+    @item = Item.find(params[:id])
+    @user = current_user
+    @sending_destination  = SendingDestination.where(user_id: current_user.id).first
   end
 
   private
