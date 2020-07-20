@@ -77,6 +77,8 @@ gem 'pry-rails'
 group :production do
   gem 'unicorn'
 end
+gem 'payjp'
 gem 'active_hash'
 gem 'rails-i18n'
-gem 'devise'
+gem 'fog-aws'
+gem 'active_hash'

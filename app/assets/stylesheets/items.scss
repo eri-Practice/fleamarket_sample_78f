@@ -37,6 +37,16 @@
       width: 700px;
       margin: 0 auto;
       &__top{
+        .EditBtn {
+          display: block;
+          margin-top: 16px;
+          background: #3ccace;
+          color: #fff;
+          text-align: center;
+          font-weight: 600;
+          transition: all ease-out .3s;
+          text-decoration: none;
+        }
         .ItemBox{
           background-color: #ffffff;
           padding: 24px 40px 40px;
@@ -64,6 +74,13 @@
                   display: flex;
                   justify-content: center;
                   margin-top: 10px;
+                }
+                li {
+                  margin-right: 10px;
+                }
+                .BottomImage {
+                  height: 87px;
+                  
                 }
               }
             }
