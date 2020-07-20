@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
 
   def  show
     @item = Item.find(params[:id])
-    @profile = Profile.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def destroy
@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :text, :price, :category_id, :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status, images_attributes: [:image_url]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :category_id, :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status, :buyer_id, images_attributes: [:image_url]).merge(seller_id: current_user.id)
   end
 
   def set_item

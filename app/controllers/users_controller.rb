@@ -13,9 +13,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-     redirect_to :items_index
+      redirect_to root_path
     else
-     render 'new'
+      render :new
     end
   end
 
