@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @profile = Profile.find(params[:id])
-    @category_name = Category.find(params[:id])
+    @category = Category.find(params[:id])
   end
 
   def category
