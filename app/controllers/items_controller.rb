@@ -12,7 +12,29 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new 
-    @item.images.build
+    @item.images.new
+    @parents = Category.where(ancestry: nil)
+    
+  end
+
+  def show
+    @item = Item.find(params[:id])
+    @profile = Profile.find(params[:id])
+    @category = Category.find(params[:id])
+  end
+
+  def category
+    respond_to do |format|
+      format.html
+      format.json do
+        #親ボックスのidから子ボックスのidの配列を作成してインスタンス変数で定義
+        if params[:parent_id]
+          @children = Category.find(params[:parent_id]).children
+        elsif params[:children_id]
+          @grandChilds = Category.find(params[:children_id]).children
+        end
+      end
+    end
   end
 
   def create
@@ -25,6 +47,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
+  end
+
+
+  def  show
+    @item = Item.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def update
@@ -40,13 +68,14 @@ class ItemsController < ApplicationController
     else
       render :show
     end
+
   end
 
   private
   def item_params
     params.require(:item).permit(
-      :name, :text, :price, :category, :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status,
-      images_attributes: [:image_url, :_destroy, :id]).merge(seller: current_user.id)
+      :name, :text, :price, :category_id, :condition, :postage_payer, :prefecture_id, :standby_day, :trading_status, :buyer_id,
+      images_attributes: [:image_url, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def set_item
@@ -60,4 +89,5 @@ class ItemsController < ApplicationController
   def move_to_index_except_seller
     redirect_to root_path, notice: '商品の編集は出品者のみが可能です' unless user_signed_in? && current_user.id == @item.seller
   end
+
 end
