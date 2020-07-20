@@ -23,6 +23,7 @@ $(function(){
   $("#parent-form").change(function () {
     // 選択した親の値を取得する
     let parentValue = $(this).val();
+    console.log(parentValue)
     // 初期値("---")以外を選択したらajaxを開始
     if (parentValue.length != 0) {
       $.ajax({

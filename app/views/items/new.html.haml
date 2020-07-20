@@ -1,4 +1,5 @@
-.LogoContainer
-  %h1 投稿する
-.FormContainer
-  = render partial: 'form', locals: { item: @item }
+.ExhibitionContainer
+  .LogoContainer
+    %h1.LogoContainer__title 投稿する
+  .FormContainer
+    = render partial: 'form', locals: { item: @item }
