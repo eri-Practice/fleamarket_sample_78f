@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :category,]
+  before_action :set_item, except: [:index, :new, :create, :category]
   before_action :move_to_index_except_signed_in_user, only: [:new, :create]
   before_action :move_to_index_except_seller, only: [:edit, :update]
   
