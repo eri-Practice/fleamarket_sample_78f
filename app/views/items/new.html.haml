@@ -1,5 +1,6 @@
 .ExhibitionContainer
-  .LogoContainer
-    %h1.LogoContainer__title 出品する
+  %header.LogoContainer
+    = link_to "#" do
+      = image_tag 'material/logo/logo.png', height: '49', width: '185'
   .FormContainer
     = render partial: 'form', locals: { item: @item }
