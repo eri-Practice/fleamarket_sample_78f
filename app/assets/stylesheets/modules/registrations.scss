@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+.SignUpContents {
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  &__header {
+    text-align: center;
+    padding: 40px;
+  }
+  &__container {
+    width: 100%;
+    .SignUpContainerInner{
+      background-color: #ffffff;
+      width: 700px;
+      margin: 0 auto;
+      &__title{
+        text-align: center;
+        padding: 32px 16px;
+        font-size: 22px;
+        font-weight: bold;
+      }
+      
+      &__form{
+        border-top: 1px solid #f8f8f8;
+        padding: 64px;
+        .NewUser{
+          max-width: 320px;
+          margin: 0 auto;
+          &__fieldTop{
+            width: 100%;
+            
+            .formRequired{
+              background-color: #3ccace;
+              color: #fff;
+              font-size: 14px;
+              border-radius: 2px;
+              padding: 0 2px;
+              display: inline-block;
+            }
+            .InputBox{
+              width: calc(100% - 32px);
+              margin: 8px 0 0;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              font-size: 16px;
+              height: 28px;
+            }
+          }
+          &__field{
+            width: 100%;
+            margin: 40px 0 0;
+            .formRequired{
+              background-color: #3ccace;
+              color: #fff;
+              font-size: 14px;
+              border-radius: 2px;
+              padding: 0 2px;
+                display: inline-block
+            }
+            .InputBox{
+              width: calc(100% - 32px);
+              margin: 8px 0 0;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              font-size: 16px;
+              height: 28px;
+            }
+          }
+          .PersonalInformation{
+            text-align: center;
+            padding: 32px 16px;
+            font-size: 22px;
+            font-weight: bold;
+          }
+          .Actions {
+            .NewUserBtn{
+              line-height: 48px;
+              background-color: #3ccace;
+              border: #3ccace;
+              color: #fff;
+              margin: 40px 0 0;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__footer{
+    .FooterInner{
+      width: 456px;
+      height: 140px;
+      margin:  0 auto;
+      padding: 40px 0;
+      text-align: center;
+      ol, ul{
+        position: relative;
+        left: 6%;
+        ol,li{
+            float: left;
+            font-size: 12px;
+            padding: 0 10px;
+          ol,a{
+            color: #333;
+            text-decoration: none;
+            display: inline-block;
+          }
+        }
+      }
+      &__logo{
+        ol,p{
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}

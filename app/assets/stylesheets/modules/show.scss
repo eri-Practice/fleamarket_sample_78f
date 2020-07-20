@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+.MypageContents {
+  display: flex;
+  width: 1020px;
+  margin: 24px auto 0;
+  &__side {
+    float: left;
+    width: 280px;
+    margin: 0 40px 0 0;
+    &--nav {
+      &--list {
+        &--item {
+          border: 1px solid #eee;
+          display: block;
+          min-height: 48px;
+          padding: 16px;
+          background-color: #fff;
+          color: #333;
+          text-decoration: none;
+        }
+        .Mypage-nav-head {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  &__user {
+    float: right;
+    width: 600px;
+    &--icon {
+      position: relative;
+      height: 200px;
+      padding: 20px;
+      background: url("http://furima.tokyo/assets/pict-reason-03-1e3c743f3ba3db8c43987d2e257916a615aa8fc59c02bbc116f041a5580ec28f.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      margin: 0 auto;
+      .name {
+        font-size: 20px;
+      }
+    }
+  }
+}

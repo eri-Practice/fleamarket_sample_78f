@@ -1,3 +1,334 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  box-sizing: border-box;
+}
+.DetailedCategories{
+  width: 100%;
+  border-top: 1px solid #eeeeee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
+  padding: 0 60px;
+  ul{
+    padding: 17px 0 16px;
+    width: 100%;
+    max-width: 1040px;
+    font-size: 14px;
+    height: 54px;
+    li{
+      padding: 0 10px 0 0;
+      float: left;
+      a{
+        text-decoration: none;
+        color: #333333;
+      }
+      .fas{
+        display: inline-block;
+        font-size: inherit;
+        text-rendering: auto;
+      }
+    }
+  }
+}
+.DetailsContents{
+  background: #f8f8f8;
+  &__container{
+    padding: 40px;
+    margin: 0 auto;
+    .DetailsInner{
+      width: 700px;
+      margin: 0 auto;
+      &__top{
+        .EditBtn {
+          display: block;
+          margin-top: 16px;
+          background: #3ccace;
+          color: #fff;
+          text-align: center;
+          font-weight: 600;
+          transition: all ease-out .3s;
+          text-decoration: none;
+        }
+        .ItemBox{
+          background-color: #ffffff;
+          padding: 24px 40px 40px;
+          &__name{
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+          }
+          &__body{
+            margin: 16px 0 0;
+            ul{
+              display: flex;
+              position: relative;
+              .top{
+                display: flex;
+                flex-direction: column;
+                width: 560px;
+                align-items: center;
+                margin: 0 auto;
+                .TopImage{
+                  object-fit: cover;
+                  height: 346px;
+                }
+                ul{
+                  display: flex;
+                  justify-content: center;
+                  margin-top: 10px;
+                }
+                li {
+                  margin-right: 10px;
+                }
+                .BottomImage {
+                  height: 87px;
+                  
+                }
+              }
+            }
+          }
+          &__price{
+            margin: 24px 0 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            p{
+              font-size: 46px;
+              font-weight: bold;
+              margin: 0 10px 0 0;
+            }
+            &__price-detail{
+              font-size: 16px;
+            }
+          }
+          .ItemDetail{
+            line-height: 1.5;
+            font-size: 18px;
+            margin-bottom: 30px;
+          }
+          &__table{
+            table{
+              width: 100%;
+              height: 375px;
+              border-collapse: collapse;
+              border: 1px solid #f8f8f8;
+              tbody{
+                display: table-row-group;
+                vertical-align: middle;
+                border-color: inherit;
+                tr{
+                  display: table-row;
+                  vertical-align: inherit;
+                  background-color: inherit;
+                  th{
+                    width: 20%;
+                    background-color: #eeeeee;
+                    font-weight: 400;
+                    padding: 8px;
+                    border: 1px solid #dedede;
+                    font-size: 14px;
+                    text-align: center;
+                  }
+                  td{
+                    width: 61%;
+                    padding: 15px 15px;
+                    border: 1px solid #dedede;
+                    font-size: 14px;
+                    a{
+                      text-decoration: none;
+                      color: #3ccace;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          &__optionalArea{
+            display: flex;
+            justify-content: space-between;
+            ol,ul{
+              margin-block-start: 1em;
+              margin-inline-end: 1em;
+              margin-inline-start: 0px;
+              margin-inline-end: 0px;
+              padding-inline-start: 0px;
+              .optionalBtn.likeBtn{
+                margin-right: auto;
+                padding: 6px 10px;
+                border-radius: 40px;
+                color: #3ccace;
+                border: 1px solid #ffb340;
+              }
+            }
+            .optional{
+              margin-block-start: 1em;
+              margin-inline-end: 1em;
+              margin-inline-start: 0px;
+              margin-inline-end: 0px;
+              padding-inline-start: 40px;
+              .optionalBtn{
+                font-size: 14px;
+                li,a{
+                  padding: 6px 10px;
+                  display: inline-block;
+                  border-radius: 4px;
+                  color: #333;
+                  border: 1px solid #333;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
+      }
+      .links{
+        margin: 0;
+        padding: 0;
+        
+        li{
+          float: left;
+          a{
+            text-decoration: none;
+            color: #3ccace;
+            .fa{
+              display: inline-block;
+              font-size: inherit;
+              text-rendering: auto;
+            }
+          }
+        }
+        li:last-child{
+          float: right;
+        }
+      }
+      .RelatedItems{
+        margin: 0;
+        padding: 0;
+        a{
+          display: block;
+          margin: 24px 0 8px;
+          color: #3ccace;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 22px;
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
+.ExhibitionContainer{
+  background-color: #f8f8f8;
+  .LogoContainer{
+    width: 700px;
+    margin: 0 auto;
+      &__title{
+        padding: 32px 16px;
+        font-size: 22px;
+        text-align: center;
+        font-weight: bold;
+      }
+  }
+  .FormContainer{
+    width: 700px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-top: 1px solid #f8f8f8;
+    .FormWrapper{
+      .FormList{
+        .FormItem{
+          border-top: 1px solid #f8f8f8;
+          padding: 20px;
+          &__title{
+
+          }
+          &__input{
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: inherit;
+            font-size: inherit;
+            height: 48px;
+            margin: 0;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+          }
+          .child_category_id{
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: inherit;
+            font-size: inherit;
+            height: 48px;
+            margin: 0;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+          }
+          .gc_category_id{
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: inherit;
+            font-size: inherit;
+            height: 48px;
+            margin: 0;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  
+
+  }
+}
+.appBanner{
+  background-image: url(material/pict/bg-appBanner-pict.jpg);
+  padding: 100px 40px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  .inner{
+    color:#fff;
+    text-align: center;
+    &__title{
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+    &__text{
+      font-size: 35px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    &__icon{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20px auto 0;
+      a:first-child{
+        margin-right: 10px;
+
+      }
+    }
+  }
+}
+
+// 出品/商品編集・フォーム画面
+#previews {
+  display: flex;
+  .previewImage {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+}
+.file_groups {
+  display: flex;
+  justify-content: space-evenly;
+  .js-file_group {
+    text-align: center;
+    display: inline-block;
+  }
+}
+
