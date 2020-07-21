@@ -46,7 +46,7 @@
               %span （税込）
               %span 送料込み
           .ItemDetail
-            = @item.text
+            = simple_format(@item.text)
           .ItemBox__table
             %table
               %tbody
