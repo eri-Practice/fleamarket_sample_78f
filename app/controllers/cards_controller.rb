@@ -34,7 +34,7 @@ class CardsController < ApplicationController
       customer.delete
       card.delete
     end
-      redirect_to action: "new"
+      redirect_to new_card_path, notice: 'お支払い情報を削除しました'
   end
 
   def show

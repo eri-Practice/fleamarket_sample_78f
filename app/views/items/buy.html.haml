@@ -33,13 +33,16 @@
             %br
             =@sending_destination.city
             =@sending_destination.house_number
+            - if @sending_destination.building_name
+              %br
+              =@sending_destination.building_name
             %br
             =@sending_destination.destination_family_name
             =@sending_destination.destination_first_name
         %section.BuyBox
           %h3 支払い方法
           - if @default_card_information.blank?
-            %br /
+            = link_to "カード情報を登録してください",  new_card_path
           - else
             -#カード情報を表示
             = "**** **** **** " + @default_card_information.last4

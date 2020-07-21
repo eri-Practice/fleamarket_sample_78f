@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
 
   def  show
     @item = Item.find(params[:id])
-    @user = User.find(current_user.id)
+    @user = User.find(@item.seller_id)
   end
 
   def update
@@ -79,7 +79,7 @@ class ItemsController < ApplicationController
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if card.blank?
       #登録された情報がない場合にカード登録画面に移動
-      redirect_to controller: "card", action: "new"
+      redirect_to new_card_path, notice: 'カード情報を登録してください'
     else
       Payjp.api_key = Rails.application.credentials[:payjp][:payjp_private_key]
       #保管した顧客IDでpayjpから情報取得

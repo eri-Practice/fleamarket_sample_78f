@@ -105,7 +105,7 @@
         - if user_signed_in? && @item.seller_id== current_user.id
           = link_to '商品の編集', edit_item_path(@item.id), method: :get, class:'EditBtn'
           = link_to '商品を削除する', item_path(@item.id), method: :delete, class:'EditBtn'
-        - unless user_signed_in? && @item.seller_id== current_user.id
+        - if user_signed_in? && @item.seller_id != current_user.id
           = link_to '購入画面に進む', buy_item_path(@item.id), method: :get, class:'EditBtn'
 
       %ul.links
