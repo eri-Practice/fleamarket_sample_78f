@@ -8,28 +8,30 @@
             %ul
               - @item.errors.full_messages.each do |message|
                 %li= message
-      .FormItem
-        .FormItem__title
-        = label :image, '商品画像'
-        %span.FormItem__Required 必須
-        %p 最大４枚までアップロードできます
-        
-        #image-box
-          #previews
-            - if @item.persisted?
-              - @item.images.each_with_index do |image, i|
-                = image_tag image.image_url.url, data: { index: i }, class: "previewImage"
-
-          = f.fields_for :images do |image|
-            .js-file_group{data: { index: image.index }}
-              = image.file_field :image_url, class: 'js-file'
-              .js-remove 削除
-            - if @item.persisted?
-              = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-          - if @item.persisted? && @item.images.count <= 3
-            .js-file_group{data: { index: @item.images.count }}
-              = file_field_tag :image_url, name: "item[images_attributes][#{@item.images.count}][image_url]", class: 'js-file'
-              .js-remove 削除
+      .ExhibitionBox
+        .FormItem
+          .FormItem__title
+          = label :image, '商品画像'
+          %span.FormItem__Required 必須
+          %p 最大４枚までアップロードできます
+          #image-box
+            #previews
+              - if @item.persisted?
+                - @item.images.each_with_index do |image, i|
+                  = image_tag image.image_url.url, data: { index: i }, class: "previewImage"
+            .image-boxbox
+              = f.fields_for :images do |image|
+                .js-file_group{data: { index: image.index }}
+                = f.label :image_url, class: 'form-image' do
+                  = icon('fas', 'camera', class: 'input-box__icon')
+                  = image.file_field :image_url, class: 'js-file'
+            .js-remove 削除
+          - if @item.persisted?
+            = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+        - if @item.persisted? && @item.images.count <= 3
+          .js-file_group{data: { index: @item.images.count }}
+            = file_field_tag :image_url, name: "item[images_attributes][#{@item.images.count}][image_url]", class: 'js-file'
+            .js-remove 削除
       .ExhibitionBox
         .FormItem
           .FormItem__title
