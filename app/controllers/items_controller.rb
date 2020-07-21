@@ -12,12 +12,12 @@ class ItemsController < ApplicationController
     @item = Item.new 
     @item.images.new
     @parents = Category.where(ancestry: nil)
-    
   end
 
   def show
     @profile = Profile.find(params[:id])
     @category = Category.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def category
@@ -35,6 +35,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @parents = Category.where(ancestry: nil)
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path, notice: '商品を出品しました'
