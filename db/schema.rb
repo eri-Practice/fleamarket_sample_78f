@@ -31,18 +31,16 @@ ActiveRecord::Schema.define(version: 2020_07_14_015909) do
     t.string "name"
     t.text "text"
     t.integer "price"
-    t.integer "category_id"
+    t.integer "category"
     t.string "condition"
     t.string "postage_payer"
     t.integer "prefecture_id"
     t.string "standby_day"
     t.string "trading_status"
-    t.bigint "seller_id", null: false
-    t.bigint "buyer_id"
+    t.integer "seller_id"
+    t.integer "buyer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["buyer_id"], name: "index_items_on_buyer_id"
-    t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -87,8 +85,6 @@ ActiveRecord::Schema.define(version: 2020_07_14_015909) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "items", "users", column: "buyer_id"
-  add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "sending_destinations", "users"
 end
