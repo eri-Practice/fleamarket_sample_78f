@@ -215,18 +215,15 @@
     }
   }
 }
-
+// 商品出品ページ
 .ExhibitionContainer{
   background-color: #f8f8f8;
+  padding: 20px;
   .LogoContainer{
     width: 700px;
     margin: 0 auto;
-      &__title{
-        padding: 32px 16px;
-        font-size: 22px;
-        text-align: center;
-        font-weight: bold;
-      }
+    text-align: center;
+    padding: 40px;
   }
   .FormContainer{
     width: 700px;
@@ -235,52 +232,97 @@
     border-top: 1px solid #f8f8f8;
     .FormWrapper{
       .FormList{
-        .FormItem{
+        .ExhibitionBox{
           border-top: 1px solid #f8f8f8;
-          padding: 20px;
-          &__title{
-
-          }
-          &__input{
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: inherit;
-            font-size: inherit;
-            height: 48px;
-            margin: 0;
-            outline: none;
-            padding: 0 16px;
-            width: 100%;
-          }
-          .child_category_id{
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: inherit;
-            font-size: inherit;
-            height: 48px;
-            margin: 0;
-            outline: none;
-            padding: 0 16px;
-            width: 100%;
-          }
-          .gc_category_id{
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: inherit;
-            font-size: inherit;
-            height: 48px;
-            margin: 0;
-            outline: none;
-            padding: 0 16px;
-            width: 100%;
+          .FormItem{
+            padding: 20px;
+            &__Required{
+              background-color: #3ccace;
+              color: #fff;
+              font-size: 14px;
+              border-radius: 2px;
+              padding: 0 2px;
+              display: inline-block;
+            }
+            &__input{
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: inherit;
+              font-size: inherit;
+              height: 48px;
+              margin: 10px 0 0 0;
+              outline: none;
+              padding: 0 16px;
+              width: 100%;
+            }
+            &__inputText{
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: border-box;
+              color: #222222;
+              font-size: 16px;
+              margin: 10px 0 0 0;
+              outline: none;
+              padding: 13px 16px;
+              resize: vertical;
+              vertical-align: middle;
+              width: 100%;
+            }
+            .child_category_id{
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: inherit;
+              font-size: inherit;
+              height: 48px;
+              margin: 10px 0 0 0;
+              outline: none;
+              padding: 0 16px;
+              width: 100%;
+            }
+            .gc_category_id{
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: inherit;
+              font-size: inherit;
+              height: 48px;
+              margin: 10px 0 0 0;
+              outline: none;
+              padding: 0 16px;
+              width: 100%;
+            }
+            select{
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: inherit;
+              font-size: inherit;
+              height: 48px;
+              margin: 10px 0 0 0;
+              outline: none;
+              padding: 0 16px;
+              width: 100%;
+            }
+            .Form__sendBtn{
+              width: 360px;
+              margin: 0px auto 32px;
+              .ExhibitionBtn{
+                background: #3ccace;
+                border: 1px solid #3ccace;
+                color: #fff;
+                width: 100%;
+                font-size: 17px;
+                min-height: 48px;
+                padding: 0 24px;
+              }
+            }
           }
         }
       }
     }
-  
-
   }
 }
+
+// 商品出品ページここまで
+
 .appBanner{
   background-image: url(material/pict/bg-appBanner-pict.jpg);
   padding: 100px 40px;

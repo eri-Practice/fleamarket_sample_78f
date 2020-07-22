@@ -49,23 +49,42 @@
   &__listsLeft {
     position: relative;
     display: flex;
-    &__listsLeft--brand {
-      padding: 0 0 0 16px;
+    .Header-nav__listsLeft--category {
+    }
+      a {
+        text-decoration: none;
+        color: #333;
+      }
     }
   }
   .Header-nav__listsRight {
     margin-left: auto;
     display: flex;
     &--login {
-      color: #333;
+      list-style: none;
       padding: 0 0 0 16px;
+      a {
+        color: #333;
+        text-decoration: none;
+      }
     }
     &--new{
-      color: #333;
+      list-style: none;
       padding: 0 0 0 16px;
+      a {
+        color: #333;
+        text-decoration: none;
+      }
+    }
+    &--mypage {
+      list-style: none;
+      text-decoration: none;
+      a {
+        text-decoration: none;
+        color: #333;
+      }
     }
   }
-}
 .Main {
   .mainVisual {
     &--image {
@@ -255,6 +274,9 @@
     .productBox {
       &__head {
         text-align: center;
+        a {
+          text-decoration: none;
+        }
         .title {
           color: #3CCACE;
           font-size: 24px;
@@ -348,6 +370,13 @@
         font-size: 16px;
         font-weight: bold;
       }
+      a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 32px;
+      }
+      }
     }
   }
   .FURIMA--logo {
@@ -355,7 +384,6 @@
     height: 46.34px;
     vertical-align: bottom;
   }
-}
 .bottom-camera {
   width: 120px;
   background: #3CCACE;
