@@ -87,3 +87,7 @@
                   = item.name
                 .details
                   = "#{item.price}円"
+              -if item.buyer_id.present? 
+                .ProductBox_photo__sold
+                  .ProductBox_photo__sold__inner
+                    SOLD
