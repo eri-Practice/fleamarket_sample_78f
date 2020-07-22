@@ -73,8 +73,8 @@ class ItemsController < ApplicationController
 
   def buy
     @user = current_user
-    @sending_destination  = SendingDestination.where(user_id: current_user.id).first
-    card = Card.where(user_id: current_user.id).first
+    @sending_destination  = SendingDestination.find_by(user_id: current_user.id)
+    card = Card.find_by(user_id: current_user.id)
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if card.blank?
       #登録された情報がない場合にカード登録画面に移動
@@ -89,7 +89,7 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    card = Card.where(user_id: current_user.id).first
+    card = Card.find_by(user_id: current_user.id)
     Payjp.api_key = Rails.application.credentials[:payjp][:payjp_private_key]
     Payjp::Charge.create(
       :amount => @item.price,
