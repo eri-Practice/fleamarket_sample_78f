@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   root "items#index"
+
   resources :items do
     collection do
       get 'search'
@@ -19,7 +20,18 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
     member do
-      get 'buy', to: 'items#buy'
+      get 'buy'
+      post 'pay'
+      get 'done'
     end
   end
+
+  resources :cards, only: [:new, :show] do
+    collection do
+      post 'show', to: 'cards#show'
+      post 'pay', to: 'cards#pay'
+      post 'delete', to: 'cards#delete'
+    end
+  end
+
 end
