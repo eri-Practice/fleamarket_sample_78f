@@ -55,6 +55,7 @@ class ItemsController < ApplicationController
     @user = User.find(@item.seller_id)
   end
 
+
   def update
     if @item.update(item_params)
       redirect_to root_path, notice: '商品を編集しました'
