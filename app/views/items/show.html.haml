@@ -29,6 +29,10 @@
       .DetailsInner__top
         .ItemBox
           .ItemBox__name
+            -if @item.buyer_id.present? 
+              .Item-box_photo__sold
+                .Item-box_photo__sold__inner
+                  SOLD
             %p
               = @item.name
           .ItemBox__body

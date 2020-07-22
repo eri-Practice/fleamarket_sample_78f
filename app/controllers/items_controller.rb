@@ -103,6 +103,10 @@ class ItemsController < ApplicationController
     redirect_to root_path, notice: '商品を購入しました'
   end
 
+  def done
+    @items_buyer= Item.find(params[:id])
+  end
+
   private
   def item_params
     params.require(:item).permit(
