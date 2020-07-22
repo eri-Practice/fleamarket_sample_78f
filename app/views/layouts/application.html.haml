@@ -8,7 +8,9 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
   %body
+    %script{src: "https://js.pay.jp/", type: "text/javascript"} 
     = render 'layouts/notifications'
     = render 'layouts/header'
     = yield
