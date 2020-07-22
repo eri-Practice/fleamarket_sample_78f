@@ -49,9 +49,9 @@ class ItemsController < ApplicationController
   end
 
 
-  # def  show
-  #   @user = User.find(current_user.id)
-  # end
+  def  show
+    @user = User.find(current_user.id)
+  end
 
   def update
     if @item.update(item_params)
