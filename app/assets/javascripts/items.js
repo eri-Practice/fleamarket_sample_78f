@@ -43,14 +43,21 @@ $(document).on('turbolinks:load', ()=> {
 
   $('#image-box').on('click', '.js-remove', function() {
     const targetIndex = $(this).parent().data('index')
+    console.log(targetIndex)
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
 
+    $(".previewImage_data-index").remove();
+    // if ($('.js-file').length <= 3) $('#image-box').append(buildFileField(fileIndex[0]));
     $(this).parent().remove();
-    // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length <= 3) $('#image-box').append(buildFileField(fileIndex[0]));
     $(`img[data-index="${targetIndex}"]`).remove();
+
+    console.log(hiddenCheck.val())
+    //$(`#previewImage-${targetIndex}`).remove()
+    // 画像入力欄が0個にならないようにしておく
+    // if ($('.js-file').length <= 3) $('#image-box').append(buildFileField(fileIndex[0]));
+    // $(`img[data-index="${targetIndex}"]`).remove();
   });
 });

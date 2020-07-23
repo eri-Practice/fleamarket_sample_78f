@@ -60,6 +60,7 @@ $(function(){
         dataType: 'json'
       })
       .done(function (gc_data) {
+        console.log(gc_data);
        
         // selectタグを生成してビューにappendする
         let gc_select = build_gcSelect()
