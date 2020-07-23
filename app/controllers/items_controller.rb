@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @profile = Profile.find(params[:id])
     @category = Category.find(params[:id])
     @user = User.find(@item.seller_id)
   end
@@ -48,7 +47,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    # binding.pry
     if @item.update(item_params)
       redirect_to root_path, notice: '商品を編集しました'
     else
