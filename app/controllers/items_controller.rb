@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index_except_seller, only: [:edit, :update]
   
   def index
-    @items = Item.all
+    @items = Item.all.order("id DESC")
   end
   
   def new
