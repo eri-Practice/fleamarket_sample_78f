@@ -26,16 +26,17 @@
       .DetailsInner__top
         .ItemBox
           .ItemBox__name
-            -if @item.buyer_id.present? 
-              .Item-box_photo__sold
-                .Item-box_photo__sold__inner
-                  SOLD
             %p
               = @item.name
           .ItemBox__body
             %ul
               %li.top
-                = image_tag @item.images[0].image_url.url, class:'TopImage'
+                .TopImageWrapper
+                  = image_tag @item.images[0].image_url.url, class:'TopImage'
+                  -if @item.buyer_id.present? 
+                    .TopImageWrapper_photo__sold
+                      .TopImageWrapper_photo__sold__inner
+                        SOLD
                 %ul
                   - @item.images.each do |image|
                     %li
