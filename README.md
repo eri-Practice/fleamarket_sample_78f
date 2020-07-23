@@ -73,7 +73,7 @@
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
 
-### Item_images table
+### Images table
 |Column|Type|Options|
 |------|----|-------|
 |image_url|string|null:false|
