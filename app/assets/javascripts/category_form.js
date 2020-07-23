@@ -10,6 +10,7 @@ $(function(){
   function build_gcSelect() {
     let gc_select = `
               <select name="item[category_id]" class="gc_category_id">
+                <option value="">---</option>
               </select>
               `
     return gc_select;
@@ -23,17 +24,18 @@ $(function(){
   $("#parent-form").change(function () {
     // 選択した親の値を取得する
     let parentValue = $(this).val();
-    console.log(parentValue)
     // 初期値("---")以外を選択したらajaxを開始
     if (parentValue.length != 0) {
       $.ajax({
       url: '/items/category',
       type: 'GET',
-      // postsコントローラーにparamsをparent_idで送る
+      // コントローラーにparamsをparent_idで送る
       data: { parent_id: parentValue },
       dataType: 'json'
       })
       .done(function (data) {
+        $(".child_category_id").remove();
+        $(".gc_category_id").remove();
          // selectタグを生成してビューにappendする
         let child_select = build_childSelect()
         $("#parent-form").after(child_select);
@@ -41,13 +43,18 @@ $(function(){
         data.forEach(function (d) {
           let option_html = build_Option(d)
           $(".child_category_id").append(option_html);
-        })
+        });
       })
+      .fail(function(){
+        alert('カテゴリー取得に失敗しました');
+      })
+    }else {
+      $('#get_category_children').remove();
+      $('#get_category_grandchildren').remove();
     }
   });
     // 子セレクトを変更したらjQueryが発火する
   $(document).on("change", ".child_category_id", function () {
-
     // 選択した子の値を取得する
     let childValue = $(".child_category_id").val();
     // 初期値("---")以外を選択したらajaxを開始
@@ -60,21 +67,21 @@ $(function(){
         dataType: 'json'
       })
       .done(function (gc_data) {
-        console.log(gc_data);
-       
+        $(".gc_category_id").remove();
         // selectタグを生成してビューにappendする
         let gc_select = build_gcSelect()
         $(".child_category_id").after(gc_select);
         // jbuilderから取得したデータを1件ずつoptionタグにappendする
         gc_data.forEach(function (gc_d) {
           let option_html = build_Option(gc_d);
-          
           $(".gc_category_id").append(option_html);
         });
       })
-      .fail(function () {
-        alert("通信エラーです！");
-      });
+      .fail(function(){
+        alert('カテゴリー取得に失敗しました');
+      })
+    }else {
+        $('#get_category_grandchildren').remove();
     }
-  })
+  });
 })

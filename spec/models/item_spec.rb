@@ -32,7 +32,7 @@ describe Item do
     end
 
     it "categoryがないと出品不可" do
-      item = build(:item, category: nil)
+      item = build(:item, category_id: nil)
       item.valid?
       expect(item.errors[:category]).to include("を入力してください")
     end
@@ -68,10 +68,11 @@ describe Item do
     end
    
     it "sellerがないと出品不可" do
-      item = build(:item, seller: nil)
+      item = build(:item, seller_id: nil)
       item.valid?
       expect(item.errors[:seller]).to include("を入力してください")
     end
 
   end
+
 end

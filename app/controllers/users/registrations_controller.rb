@@ -25,8 +25,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(user_params)
-    @user.save
-    redirect_to root_path
+    if @user.save
+      redirect_to root_path, notice: '登録が完了しました。ログインしてください。'
+    else
+      render :new, notice: '登録に失敗しました'
+    end
   end
 
   def after_sign_up_path_for(resource)
