@@ -54,9 +54,10 @@
               %span.FormItem__Required 必須
               -# = f.collection_select :category_id, @parents, :id, :name,{prompt: "選択して下さい"}, class: "FormItem__input", id: "parent-form", name: 'item[category_ids][]'
 
-              = f.collection_select :category_id, Category.roots, :id, :name, {selected: @item.category.root_id}, {class: 'FormItem__input', id: 'parent-form',name: 'item[category_ids][]'}
-              = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name, {prompt: "選択してください", selected: @item.category.parent_id}, {name: "item[category_id]", class: 'child_category_id'}
-              = f.collection_select :category_id, @item.category.parent.children, :id, :name, {prompt: "選択してください", selected: @item.category.id}, {name: "item[category_id]", class: 'gc_category_id'}
+              = f.collection_select :category_id, Category.roots, :id, :name, {selected: @item.category&.root_id }, {class: 'FormItem__input', id: 'parent-form',name: 'item[category_ids][]'}
+              - if @item.category.present?
+                = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name, {prompt: "選択してください", selected: @item.category.parent_id}, {name: "item[category_id]", class: 'child_category_id'}
+                = f.collection_select :category_id, @item.category.parent.children, :id, :name, {prompt: "選択してください", selected: @item.category.id}, {name: "item[category_id]", class: 'gc_category_id'}
 
             .FormItem
               .FormItem__title
