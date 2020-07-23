@@ -1,4 +1,7 @@
-.LogoContainer
-  %h1 投稿を編集する
-.FormContainer
-  = render partial: 'form', locals: { item: @item }
+.ExhibitionContainer
+  %header.LogoContainer
+    = link_to "#" do
+      = image_tag 'material/logo/logo.png', height: '49', width: '185'
+    %h1 投稿編集
+  .FormContainer
+    = render partial: 'form', locals: { item: @item }
