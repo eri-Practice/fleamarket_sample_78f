@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
   
-
   def new
     @item = Item.new 
     @item.images.new
@@ -16,9 +15,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:id])
+    # @profile = Profile.find(params[:id])
     @category = Category.find(params[:id])
-    @item = Item.find(params[:id])
+    @user = User.find(@item.seller_id)
   end
 
   def category
@@ -46,17 +45,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @parents = Category.where(ancestry: nil)
   end
-
-
-  def  show
-    @item = Item.find(params[:id])
-    @user = User.find(@item.seller_id)
-  end
-
 
   def update
+    # binding.pry
     if @item.update(item_params)
       redirect_to root_path, notice: '商品を編集しました'
     else
