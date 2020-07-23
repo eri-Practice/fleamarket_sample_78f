@@ -1,4 +1,91 @@
-.LogoContainer
-  %h1 投稿を編集する
-.FormContainer
-  = render partial: 'form', locals: { item: @item }
+.ExhibitionContainer
+  %header.LogoContainer
+    = link_to "#" do
+      = image_tag 'material/logo/logo.png', height: '49', width: '185'
+    %h1 投稿編集
+  .FormContainer
+    .FormWrapper
+      .FormList
+        = form_with model: @item, local: true, class:"Form" do |f|
+          .FormItemTop
+            - if @item.errors.any?
+              .SettingItemForm__errors
+                %h2= "#{@item.errors.full_messages.count}件のエラーが発生しました。"
+                %ul
+                  - @item.errors.full_messages.each do |message|
+                    %li= message
+          .ExhibitionBox
+            .FormItem
+              .FormItem__title
+              = label :image, '商品画像'
+              %span.FormItem__Required 必須
+              %p 最大４枚までアップロードできます
+              #image-box
+                #previews
+                  - if @item.persisted?
+                    - @item.images.each_with_index do |image, i|
+                      = image_tag image.image_url.url, data: { index: i }, class: "previewImage"
+                = f.fields_for :images do |image|
+                  .js-file_group{data: { index: image.index }}
+                    = image.file_field :image_url, class: 'js-file'
+                    .js-remove 
+                      削除
+                    - if @item.persisted?
+                      = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                - if @item.persisted? && @item.images.count <= 3
+                  .js-file_group{data: { index: @item.images.count }}
+                    = file_field_tag :image_url, name: "item[images_attributes][#{@item.images.count}][image_url]", class: 'js-file'
+                    .js-remove 削除
+          .ExhibitionBox
+            .FormItem
+              .FormItem__title
+              =label :name, '商品名'
+              %span.FormItem__Required 必須
+              = f.text_field :name, class: "FormItem__input", placeholder: "商品名を入力"
+            .FormItem
+              .FormItem__title
+              = label :text, '商品説明'
+              %span.FormItem__Required 必須
+              = f.text_area :text, class: 'FormItem__inputText', placeholder: "商品説明を入力"
+          .ExhibitionBox
+            .FormItem
+              .FormItem__title
+              = label :category, 'カテゴリー'
+              %span.FormItem__Required 必須
+              -# = f.collection_select :category_id, @parents, :id, :name,{prompt: "選択して下さい"}, class: "FormItem__input", id: "parent-form", name: 'item[category_ids][]'
+
+              = f.collection_select :category_id, Category.roots, :id, :name, {selected: @item.category&.root_id }, {class: 'FormItem__input', id: 'parent-form',name: 'item[category_ids][]'}
+              - if @item.category.present?
+                = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name, {prompt: "選択してください", selected: @item.category.parent_id}, {name: "item[category_id]", class: 'child_category_id'}
+                = f.collection_select :category_id, @item.category.parent.children, :id, :name, {prompt: "選択してください", selected: @item.category.id}, {name: "item[category_id]", class: 'gc_category_id'}
+
+            .FormItem
+              .FormItem__title
+              = label :condition, '商品の状態'
+              %span.FormItem__Required 必須
+              = f.select :condition, [["新品、未使用", "新品、未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"]], include_blank: "選択して下さい", class: "FormItem__input" 
+          .ExhibitionBox
+            .FormItem
+              .FormItem__title
+              = label :postage_payer, '配送料の負担'
+              %span.FormItem__Required 必須
+              = f.select :postage_payer, [["送料込み(出品者負担)", "送料込み(出品者負担)"],["着払い(購入者負担)", "着払い(購入者負担)"]], include_blank: "選択して下さい", class: 'FormItem__input'
+            .FormItem
+              .FormItem__title
+              = label :prefecture_id, '発送元の地域'
+              %span.FormItem__Required 必須
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい", class: 'FormItem__input'
+            .FormItem
+              .FormItem__title
+              = label :standby_day, '発送までの日数'
+              %span.FormItem__Required 必須
+              = f.select :standby_day, [["１〜２日で発送", "１〜２日で発送"],["２〜３日で発送", "２〜３日で発送"],["４〜７日で発送", "４〜７日で発送"]], include_blank: "選択して下さい", class: 'FormItem__input'
+          .ExhibitionBox
+            .FormItem
+              .FormItem__title
+              = label :price, '値段'
+              %span.FormItem__Required 必須
+              = f.text_field :price, class: "FormItem__input", placeholder: "値段を入力"
+            .FormItem
+              .Form__sendBtn
+                = f.submit "出品する", class: "ExhibitionBtn"
