@@ -17,6 +17,7 @@
 ### Profiles table
 |Column|Type|Options|
 |------|----|-------|
+|first_name|string|null:false|
 |family_name|string|null:false|
 |first_name_kana|string|null:false|
 |family_name_kana|string|null:false|
@@ -42,11 +43,11 @@
 #### Association
 - belongs_to :user
 
-### Credit_cards table
+### Cards table
 |Column|Type|Options|
 |------|----|-------|
-|card_token|integer|null:false|
-|customer_id|integer|null: false|
+|card_id|string|null:false|
+|customer_id|string |null: false|
 |user_id|references|null: false, foreign_key: true|
 #### Association
 - belongs_to :user
@@ -68,11 +69,11 @@
 #### Association
 - has_many :item_images, dependent: :destroy
 - belongs_to :category
+- belongs_to_active_hash :prefecture
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
-- belongs_to_active_hash :prefecture
 
-### Item_images table
+### Images table
 |Column|Type|Options|
 |------|----|-------|
 |image_url|string|null:false|
