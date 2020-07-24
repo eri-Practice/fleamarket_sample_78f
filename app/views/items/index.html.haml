@@ -78,10 +78,10 @@
           %h3.title 新規投稿商品
       .productBox__Lists
         - @items.each do |item|
-          = link_to item_path(item.id) do
-            .productBox__List
+          .productBox__List
+            = link_to item_path(item.id), class: "ItemLink" do
               %figure.productBox__List--img
-                = image_tag item.images[0].image_url.url, class:'img', width: "220px", hight: "150px"
+                = image_tag item.images[0].image_url.url, class: 'productBox__List--img', width: "220px", hight: "150px"
               .productBox__List--body
                 %h3.name
                   = item.name
